@@ -333,7 +333,7 @@
   :focus-visible { outline: 2.5px solid var(--brass); outline-offset: 2px; border-radius: 4px; }
 
 /* ---------- Home fold: meeting + latest updates (no-copy hero) ---------- */
-.fold-d { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: start; }
+.fold-d { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
 .meeting.mv { display: grid; grid-template-columns: auto 1fr; grid-template-areas: 'cal info' 'act act'; gap: 16px 20px; padding: 24px 26px; align-items: center; }
 .meeting.mv .cal { grid-area: cal; }
 .meeting.mv .info { grid-area: info; }
