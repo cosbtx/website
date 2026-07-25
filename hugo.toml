@@ -2,6 +2,9 @@ baseURL = "https://demo.cityofspringbranch.org/"
 title = "City of Spring Branch, Texas"
 enableRobotsTXT = true
 enableGitInfo = false
+# Publish future-dated content. Essential: meeting notices are posted with a
+# future meeting date and must appear before that date arrives.
+buildFuture = true
 
 defaultContentLanguage = "en"
 [languages.en]

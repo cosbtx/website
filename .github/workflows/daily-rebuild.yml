@@ -1,0 +1,27 @@
+name: Daily rebuild
+
+# Rebuilds the site once a day so the "next meeting" card advances on schedule
+# (the meeting date is computed at build time). Also runnable manually.
+#
+# Requires a repo secret CF_DEPLOY_HOOK:
+#   Cloudflare Pages > project > Settings > Builds & deployments > Deploy hooks
+#   Create a hook on the production branch, copy its URL, then add it under
+#   GitHub repo > Settings > Secrets and variables > Actions > New secret.
+#
+# Note: GitHub disables scheduled workflows after ~60 days with no repo commits.
+# Regular content commits keep it active; if the repo goes quiet, re-enable it
+# from the Actions tab.
+
+on:
+  schedule:
+    - cron: "0 9 * * *"   # 09:00 UTC daily (~4:00 AM Central)
+  workflow_dispatch: {}
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages deploy hook
+        run: curl -fsS -X POST "$DEPLOY_HOOK"
+        env:
+          DEPLOY_HOOK: ${{ secrets.CF_DEPLOY_HOOK }}

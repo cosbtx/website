@@ -175,15 +175,3 @@ collections:
             fields:
               - { name: label, label: "Button label", widget: string }
               - { name: url, label: "URL", widget: string }
-      - name: meeting
-        label: "Next Public Meeting"
-        file: "data/meeting.toml"
-        format: "toml"
-        fields:
-          - { name: title, label: "Meeting title", widget: string }
-          - { name: month, label: "Month (e.g. Jul)", widget: string }
-          - { name: day, label: "Day", widget: string }
-          - { name: year, label: "Year", widget: string }
-          - { name: time, label: "Time (e.g. 6:30 PM)", widget: string }
-          - { name: weekday, label: "Weekday", widget: string }
-          - { name: agendaURL, label: "Agenda link", widget: string }

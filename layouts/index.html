@@ -4,27 +4,7 @@
   <div class="wrap">
     <div class="fold-d">
 
-      {{ with hugo.Data.meeting }}
-      <div class="meeting mv" aria-label="Next public meeting">
-        <div class="cal">
-          <div class="m">{{ .month }}</div>
-          <div class="d">{{ .day }}</div>
-          <div class="y">{{ .year }}</div>
-        </div>
-        <div class="info">
-          <div class="eyebrow">Next Public Meeting</div>
-          <h3>{{ .title }}</h3>
-          <div class="meta">
-            <span><span class="mono">{{ .time }}</span> &middot; {{ .weekday }}</span>
-            <span>{{ $.Site.Params.meetingPlace }} &middot; <span class="mono">{{ $.Site.Params.meetingAddress }}</span></span>
-          </div>
-        </div>
-        <div class="actions">
-          <a class="btn btn-brass" href="{{ .agendaURL }}">View agenda</a>
-          <a class="btn btn-ghost" href="#">Add to calendar</a>
-        </div>
-      </div>
-      {{ end }}
+      {{ partial "meeting-card.html" . }}
 
       <aside class="latest">
         <div class="section-label">Latest Updates</div>

@@ -1,8 +1,0 @@
-# The "Next public meeting" card on the home page.
-title = "Regular City Commission Meeting"
-month = "Jul"
-day = "13"
-year = "2026"
-time = "6:30 PM"
-weekday = "Monday"
-agendaURL = "/documents/"

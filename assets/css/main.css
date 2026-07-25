@@ -371,3 +371,7 @@
 .plain-list a { display: block; padding: 13px 4px; color: var(--live-oak); text-decoration: none; font-family: var(--serif); font-size: 18px; }
 .plain-list a:hover { color: var(--live-oak-2); }
 .page-title { font-family: var(--serif); }
+
+/* "Agenda coming soon" status (replaces the View agenda button before an agenda is posted) */
+.agenda-soon { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em; color: #CBDBCF; padding: 6px 0; }
+.agenda-soon::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--brass-soft); flex: none; }

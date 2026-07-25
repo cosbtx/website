@@ -1,0 +1,63 @@
+{{/*
+  Meeting card. Two states, decided at build time:
+   1. A future-dated meeting notice exists -> show its date + "View agenda".
+   2. None -> show the next second Monday (default schedule) + "Agenda coming soon".
+  A daily rebuild keeps the computed date fresh. Time/location default from site params.
+*/}}
+{{ $now := now }}
+{{ $today := time.AsTime (printf "%04d-%02d-%02dT00:00:00Z" $now.Year (int $now.Month) $now.Day) }}
+
+{{ $future := (where (where site.RegularPages "Section" "meetings") "Date" ">=" $today).ByDate }}
+{{ $upcoming := false }}
+{{ if gt (len $future) 0 }}{{ $upcoming = index $future 0 }}{{ end }}
+
+{{ $defaultTime := "6:30 PM" }}
+{{ $defaultLocation := printf "%s, %s" .Site.Params.meetingPlace .Site.Params.meetingAddress }}
+
+{{ $date := "" }}{{ $time := $defaultTime }}{{ $location := $defaultLocation }}
+{{ $title := "Regular City Commission Meeting" }}{{ $hasAgenda := false }}{{ $agendaURL := "" }}
+
+{{ if $upcoming }}
+  {{ $date = $upcoming.Date }}
+  {{ with $upcoming.Params.time }}{{ $time = . }}{{ end }}
+  {{ with $upcoming.Params.location }}{{ $location = . }}{{ end }}
+  {{ if eq $upcoming.Params.meeting_type "special" }}{{ $title = "Special Commission Meeting" }}{{ end }}
+  {{ $hasAgenda = true }}
+  {{ $agendaURL = $upcoming.RelPermalink }}
+{{ else }}
+  {{ $first := time.AsTime (printf "%04d-%02d-01T00:00:00Z" $now.Year (int $now.Month)) }}
+  {{ $wd := int $first.Weekday }}
+  {{ $firstMon := add 1 (mod (sub 8 $wd) 7) }}
+  {{ $sm := $first.AddDate 0 0 (add $firstMon 6) }}
+  {{ if lt $sm.Unix $today.Unix }}
+    {{ $nf := $first.AddDate 0 1 0 }}
+    {{ $wd2 := int $nf.Weekday }}
+    {{ $fm2 := add 1 (mod (sub 8 $wd2) 7) }}
+    {{ $sm = $nf.AddDate 0 0 (add $fm2 6) }}
+  {{ end }}
+  {{ $date = $sm }}
+{{ end }}
+
+<div class="meeting mv" aria-label="Next public meeting">
+  <div class="cal">
+    <div class="m">{{ $date.Format "Jan" }}</div>
+    <div class="d">{{ $date.Format "2" }}</div>
+    <div class="y">{{ $date.Format "2006" }}</div>
+  </div>
+  <div class="info">
+    <div class="eyebrow">Next Public Meeting</div>
+    <h3>{{ $title }}</h3>
+    <div class="meta">
+      <span><span class="mono">{{ $time }}</span> &middot; {{ $date.Format "Monday" }}</span>
+      <span>{{ $location }}</span>
+    </div>
+  </div>
+  <div class="actions">
+    {{ if $hasAgenda }}
+      <a class="btn btn-brass" href="{{ $agendaURL }}">View agenda</a>
+      <a class="btn btn-ghost" href="#">Add to calendar</a>
+    {{ else }}
+      <span class="agenda-soon">Agenda coming soon</span>
+    {{ end }}
+  </div>
+</div>
