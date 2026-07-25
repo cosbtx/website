@@ -1,10 +1,10 @@
-enabled = false
-level = "emergency"
-kicker = "Flood Evacuation Order"
-effective = "In effect since 6:00 AM · Mon, Jul 12"
-title = "Voluntary evacuation for low-lying areas near the Guadalupe River."
-detail = "If you are in a flood-prone area, move to higher ground now. Do not drive through flooded roadways."
+enabled = true
+level = "advisory"
+kicker = "Preview Demo"
+effective = "Branch: preview-demo"
+title = "This is a preview build. The live site is not affected by this change."
+detail = "Demonstrating Cloudflare per-branch preview URLs."
 
 [link]
-label = "Evacuation routes & info"
+label = "Learn more"
 url = "#"
