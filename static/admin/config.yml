@@ -6,7 +6,7 @@
 # in Chrome/Edge, and choose "Work with Local Repository" (no GitHub needed).
 backend:
   name: github
-  repo: SPRING-BRANCH-ORG/cityofspringbranch   # <-- city GitHub org/repo
+  repo: cosbtx/website
   branch: main
   base_url: https://AUTH-WORKER.workers.dev     # <-- deployed sveltia-cms-auth Worker
 
