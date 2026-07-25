@@ -1,0 +1,189 @@
+# Sveltia CMS configuration.
+# ---------------------------------------------------------------------------
+# BEFORE THIS WORKS AGAINST GITHUB, fill in the two placeholders below once the
+# city's GitHub org + repo exist and the sveltia-cms-auth Worker is deployed.
+# Until then, use LOCAL mode: run `hugo server`, open http://localhost:1313/admin/
+# in Chrome/Edge, and choose "Work with Local Repository" (no GitHub needed).
+backend:
+  name: github
+  repo: SPRING-BRANCH-ORG/cityofspringbranch   # <-- city GitHub org/repo
+  branch: main
+  base_url: https://AUTH-WORKER.workers.dev     # <-- deployed sveltia-cms-auth Worker
+
+# Enables the no-GitHub local testing mode described above.
+local_backend: true
+
+# Draft -> preview -> publish. Each unpublished entry becomes a branch, and
+# Cloudflare Pages builds a preview URL for it. Review the real page, then publish.
+publish_mode: editorial_workflow
+
+# The in-editor preview pane cannot run Hugo templates, so it misrepresents
+# template-driven pages (meeting notices especially). Turn it off; use the
+# Cloudflare preview URL as the real preview.
+editor:
+  preview: false
+
+# Uploaded PDFs/images land in the repo (repo-first storage). Served at /uploads/.
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+collections:
+  # 1) Standalone documents — feed the searchable Register.
+  - name: documents
+    label: "Documents (Register)"
+    label_singular: "Document"
+    description: "Agendas, minutes, ordinances, resolutions, budgets, RFPs."
+    folder: "content/documents"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    format: "toml-frontmatter"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: date, label: "Date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - name: doctype
+        label: "Type"
+        widget: select
+        options:
+          - { label: "Agenda", value: "agenda" }
+          - { label: "Minutes", value: "minutes" }
+          - { label: "Ordinance", value: "ordinance" }
+          - { label: "Resolution", value: "resolution" }
+          - { label: "Financial", value: "financial" }
+          - { label: "RFP", value: "rfp" }
+      - { name: docnum, label: "Document number (optional, e.g. Ordinance 2026-01)", widget: string, required: false }
+      - { name: file, label: "PDF file", widget: file }
+      - { name: filesize, label: "File-size label (optional, e.g. 240 KB)", widget: string, required: false }
+
+  # 2) Meeting notices — structured fields; the Hugo template renders the legal boilerplate.
+  - name: meetings
+    label: "Meeting Notices"
+    label_singular: "Meeting Notice"
+    description: "Fill the date, agenda, and (rarely) location. The standard notice wording is added automatically."
+    folder: "content/meetings"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    format: "toml-frontmatter"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: "Title", widget: string, default: "Notice of Regular Commission Meeting" }
+      - { name: date, label: "Meeting date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - name: meeting_type
+        label: "Meeting type"
+        widget: select
+        default: "regular"
+        options:
+          - { label: "Regular", value: "regular" }
+          - { label: "Special", value: "special" }
+      - { name: time, label: "Time", widget: string, default: "6:30 PM" }
+      - { name: location, label: "Location", widget: string, default: "Fire Station #6, 9850 FM 311" }
+      - name: agenda
+        label: "Agenda (one item per line; paste a list, bullets are fine)"
+        widget: text
+        default: |
+          Call to order and roll call
+          Approval of the agenda
+          Public comment to the Commission
+
+          Adjournment
+      - { name: notify, label: "Email this notice to subscribers", widget: boolean, default: true }
+
+  # 3) Posts / notices — Markdown body + optional attachments.
+  - name: posts
+    label: "Notices & News"
+    label_singular: "Notice / Post"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    format: "toml-frontmatter"
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: date, label: "Date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - { name: urgent, label: "Mark as urgent", widget: boolean, default: false, required: false }
+      - name: attachments
+        label: "Attachments (PDFs, forms, etc.)"
+        widget: list
+        required: false
+        summary: "{{fields.label}}"
+        fields:
+          - { name: label, label: "Label", widget: string }
+          - { name: file, label: "File", widget: file }
+      - { name: body, label: "Body", widget: markdown }
+
+  # 3) Standalone pages — edit existing pages in place.
+  - name: pages
+    label: "Pages"
+    files:
+      - name: about
+        label: "About the City"
+        file: "content/about.md"
+        format: "toml-frontmatter"
+        fields:
+          - { name: title, label: "Title", widget: string }
+          - { name: date, label: "Date", widget: datetime, required: false }
+          - { name: body, label: "Body", widget: markdown }
+      - name: contact
+        label: "Contact"
+        file: "content/contact.md"
+        format: "toml-frontmatter"
+        fields:
+          - { name: title, label: "Title", widget: string }
+          - { name: date, label: "Date", widget: datetime, required: false }
+          - { name: body, label: "Body", widget: markdown }
+      - name: elections
+        label: "Elections"
+        file: "content/elections.md"
+        format: "toml-frontmatter"
+        fields:
+          - { name: title, label: "Title", widget: string }
+          - { name: date, label: "Date", widget: datetime, required: false }
+          - { name: body, label: "Body", widget: markdown }
+      - name: local_businesses
+        label: "Local Businesses"
+        file: "content/community/local-businesses.md"
+        format: "toml-frontmatter"
+        fields:
+          - { name: title, label: "Title", widget: string }
+          - { name: date, label: "Date", widget: datetime, required: false }
+          - { name: body, label: "Body", widget: markdown }
+
+  # Site settings edited as simple forms (no code).
+  - name: settings
+    label: "Site Settings"
+    files:
+      - name: alert
+        label: "Emergency / Advisory Alert"
+        file: "data/alert.toml"
+        format: "toml"
+        fields:
+          - { name: enabled, label: "Show the alert bar", widget: boolean, default: false }
+          - name: level
+            label: "Level"
+            widget: select
+            default: "emergency"
+            options:
+              - { label: "Emergency (red)", value: "emergency" }
+              - { label: "Advisory (amber)", value: "advisory" }
+          - { name: kicker, label: "Kicker (e.g. Flood Evacuation Order)", widget: string }
+          - { name: effective, label: "Effective text (optional)", widget: string, required: false }
+          - { name: title, label: "Headline", widget: string }
+          - { name: detail, label: "Detail (optional)", widget: text, required: false }
+          - name: link
+            label: "Action link (optional)"
+            widget: object
+            required: false
+            fields:
+              - { name: label, label: "Button label", widget: string }
+              - { name: url, label: "URL", widget: string }
+      - name: meeting
+        label: "Next Public Meeting"
+        file: "data/meeting.toml"
+        format: "toml"
+        fields:
+          - { name: title, label: "Meeting title", widget: string }
+          - { name: month, label: "Month (e.g. Jul)", widget: string }
+          - { name: day, label: "Day", widget: string }
+          - { name: year, label: "Year", widget: string }
+          - { name: time, label: "Time (e.g. 6:30 PM)", widget: string }
+          - { name: weekday, label: "Weekday", widget: string }
+          - { name: agendaURL, label: "Agenda link", widget: string }

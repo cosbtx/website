@@ -1,0 +1,10 @@
+enabled = false
+level = "emergency"
+kicker = "Flood Evacuation Order"
+effective = "In effect since 6:00 AM · Mon, Jul 12"
+title = "Voluntary evacuation for low-lying areas near the Guadalupe River."
+detail = "If you are in a flood-prone area, move to higher ground now. Do not drive through flooded roadways."
+
+[link]
+label = "Evacuation routes & info"
+url = "#"

@@ -1,0 +1,22 @@
+{{ define "main" }}
+{{/* NOTE: the boilerplate wording below is a placeholder. Have the city attorney
+     confirm the exact Texas Open Meetings Act notice language before going live. */}}
+<article class="wrap article">
+  <div class="section-label">Public Meeting Notice</div>
+  <h1 class="article-title">{{ .Title }}</h1>
+  <p class="article-date mono">Meeting date: {{ .Date.Format "Monday, January 2, 2006" }}</p>
+  <div class="prose">
+    <p>Notice is hereby given that the City Commission of the City of Spring Branch, Texas will hold a {{ .Params.meeting_type }} meeting on <strong>{{ .Date.Format "Monday, January 2, 2006" }}</strong> at <strong>{{ .Params.time }}</strong> at <strong>{{ .Params.location }}</strong>.</p>
+    <p>The following items will be considered:</p>
+    <ol>
+      {{- range (strings.Split .Params.agenda "\n") -}}
+      {{- $item := replaceRE "^([-*•]|[0-9]+[.)])\\s+" "" (trim . " \t\r") -}}
+      {{- with (trim $item " ") }}<li>{{ . }}</li>{{ end -}}
+      {{- end -}}
+    </ol>
+    <p>The City Commission reserves the right to meet in closed session on any agenda item as authorized by the Texas Open Meetings Act (Chapter 551, Texas Government Code).</p>
+    <p>The facility is wheelchair accessible. Persons with disabilities who require accommodation to participate should contact the city at <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a> in advance of the meeting.</p>
+  </div>
+  <p style="margin-top:32px;"><a href="/posts/">&larr; All notices &amp; news</a></p>
+</article>
+{{ end }}

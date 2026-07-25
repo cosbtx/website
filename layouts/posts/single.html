@@ -1,0 +1,26 @@
+{{ define "main" }}
+<article class="wrap article">
+  <div class="section-label">{{ if .Params.urgent }}Urgent Notice{{ else }}Notice{{ end }}</div>
+  <h1 class="article-title">{{ .Title }}</h1>
+  <p class="article-date mono">{{ .Date.Format "January 2, 2006" }}</p>
+  <div class="prose">
+    {{ .Content }}
+  </div>
+  {{ with .Params.attachments }}
+  <div class="attachments">
+    <h2>Attachments</h2>
+    <ul>
+      {{ range . }}
+      <li>
+        <a href="{{ .file }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 3v5h5"/><path d="M8 3h6l5 5v11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/></svg>
+          {{ .label }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+  <p style="margin-top:32px;"><a href="/posts/">&larr; All notices &amp; news</a></p>
+</article>
+{{ end }}

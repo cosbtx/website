@@ -1,0 +1,13 @@
+{{ $cur := .RelPermalink }}
+<nav class="primary" aria-label="Primary">
+  <div class="nav-inner">
+    {{ range .Site.Menus.main }}
+    <a href="{{ .URL }}"{{ if or (eq $cur .URL) (and (ne .URL "/") (hasPrefix $cur .URL)) }} class="here"{{ end }}>{{ .Name }}</a>
+    {{ end }}
+    <span class="nav-spacer"></span>
+    <label class="nav-search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" placeholder="Search the city…" aria-label="Search the city website" id="topSearch">
+    </label>
+  </div>
+</nav>

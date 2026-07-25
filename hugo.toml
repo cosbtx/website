@@ -1,0 +1,55 @@
+baseURL = "https://cityofspringbranch.org/"
+title = "City of Spring Branch, Texas"
+enableRobotsTXT = true
+enableGitInfo = false
+
+defaultContentLanguage = "en"
+[languages.en]
+  locale = "en-US"
+  label = "English"
+
+[params]
+  founded = "1852"
+  incorporated = "2015"
+  county = "Comal County"
+  email = "info@cityofspringbranch.org"
+  poBox = "P.O. Box 1852"
+  cityStateZip = "Spring Branch, TX 78070"
+  meetingPlace = "Fire Station #6"
+  meetingAddress = "9850 FM 311"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    name = "Documents"
+    url = "/documents/"
+    weight = 3
+  [[menu.main]]
+    name = "Community"
+    url = "/community/"
+    weight = 4
+  [[menu.main]]
+    name = "Notices & News"
+    url = "/posts/"
+    weight = 5
+  [[menu.main]]
+    name = "Elections"
+    url = "/elections/"
+    weight = 6
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 7
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[taxonomies]
+  # none for now

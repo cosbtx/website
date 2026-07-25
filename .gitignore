@@ -1,0 +1,10 @@
+# Hugo build output
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# Pagefind index (generated at build)
+/static/pagefind/
+
+# OS cruft
+.DS_Store

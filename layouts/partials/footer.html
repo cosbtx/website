@@ -1,0 +1,39 @@
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand">
+          <div class="seal"><img src="/img/city-seal.png" alt=""></div>
+          <div>
+            <h4>City of Spring Branch</h4>
+            <p>An incorporated general-law municipality in {{ .Site.Params.county }}, Texas. Founded {{ .Site.Params.founded }}, incorporated {{ .Site.Params.incorporated }} to preserve local self-governance.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4>Government</h4>
+        <ul>
+          <li><a href="/about/">City Commission</a></li>
+          <li><a href="/documents/">Agendas &amp; Minutes</a></li>
+          <li><a href="/documents/">Ordinances &amp; Resolutions</a></li>
+          <li><a href="/documents/">Budget &amp; Finance</a></li>
+          <li><a href="/elections/">Elections</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>{{ .Site.Params.poBox }}</li>
+          <li>{{ .Site.Params.cityStateZip }}</li>
+          <li><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a></li>
+          <li><a href="/contact/">Public records request</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-rule">
+    <div class="colophon">
+      <span>&copy; {{ now.Year }} City of Spring Branch, Texas &middot; All rights reserved</span>
+      <span>Texas One and Indivisible</span>
+    </div>
+  </div>
+</footer>

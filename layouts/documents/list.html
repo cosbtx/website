@@ -1,0 +1,101 @@
+{{ define "main" }}
+{{ $labels := dict "agenda" "Agenda" "minutes" "Minutes" "ordinance" "Ordinance" "resolution" "Resolution" "financial" "Financial" "rfp" "RFP" }}
+<section class="register" id="documents">
+  <div class="wrap">
+    <div class="section-label">Public Register</div>
+    <h2 class="section-title">Documents &amp; Records</h2>
+    <p class="intro">Every agenda, set of minutes, ordinance, resolution, budget, and RFP the city publishes — in one searchable place, newest first. Search by keyword, or filter by type and year.</p>
+
+    <div class="toolbar">
+      <label class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="docSearch" placeholder="Search documents… (e.g. “sign ordinance”, “budget”)" aria-label="Search documents">
+      </label>
+      <select class="select" id="yearFilter" aria-label="Filter by year">
+        <option value="">All years</option>
+        {{ range (.Pages.GroupByDate "2006") }}<option value="{{ .Key }}">{{ .Key }}</option>{{ end }}
+      </select>
+    </div>
+
+    <div class="chips" id="typeChips" role="group" aria-label="Filter by document type">
+      <button class="chip" data-type="all" aria-pressed="true">All types</button>
+      <button class="chip" data-type="agenda" aria-pressed="false">Agendas</button>
+      <button class="chip" data-type="minutes" aria-pressed="false">Minutes</button>
+      <button class="chip" data-type="ordinance" aria-pressed="false">Ordinances</button>
+      <button class="chip" data-type="resolution" aria-pressed="false">Resolutions</button>
+      <button class="chip" data-type="financial" aria-pressed="false">Financial</button>
+      <button class="chip" data-type="rfp" aria-pressed="false">RFPs</button>
+    </div>
+
+    <p class="count" id="count" aria-live="polite"></p>
+
+    <div class="table-scroll">
+      <table class="reg-table">
+        <thead>
+          <tr>
+            <th style="width:110px;">Date</th>
+            <th>Document</th>
+            <th style="width:120px;">Type</th>
+            <th class="h-size" style="width:80px;text-align:right;">Size</th>
+            <th style="width:120px;"></th>
+          </tr>
+        </thead>
+        <tbody id="docBody">
+          {{ range .Pages.ByDate.Reverse }}
+          <tr data-type="{{ .Params.doctype }}" data-year="{{ .Date.Format "2006" }}" data-search="{{ lower .Title }} {{ lower .Params.docnum }} {{ .Params.doctype }}">
+            <td class="td-date">{{ .Date.Format "Jan 02, 2006" }}</td>
+            <td class="td-title">{{ .Title }}{{ with .Params.docnum }}<span class="docno">{{ . }}</span>{{ end }}</td>
+            <td><span class="tag t-{{ .Params.doctype }}">{{ index $labels .Params.doctype }}</span></td>
+            <td class="td-size">{{ with .Params.filesize }}{{ . }}{{ else }}PDF{{ end }}</td>
+            <td>{{ with .Params.file }}<a class="dl" href="{{ . }}" aria-label="Download {{ $.Title }}">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg> PDF</a>{{ end }}</td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+    <div class="empty" id="empty" hidden>No documents match your search. Try clearing the filters.</div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var rows = Array.prototype.slice.call(document.querySelectorAll('#docBody tr'));
+    var search = document.getElementById('docSearch');
+    var year = document.getElementById('yearFilter');
+    var chips = Array.prototype.slice.call(document.querySelectorAll('#typeChips .chip'));
+    var countEl = document.getElementById('count');
+    var emptyEl = document.getElementById('empty');
+    var activeType = 'all';
+
+    function render() {
+      var q = search.value.trim().toLowerCase();
+      var yr = year.value;
+      var n = 0;
+      rows.forEach(function (r) {
+        var ok = true;
+        if (activeType !== 'all' && r.getAttribute('data-type') !== activeType) ok = false;
+        if (yr && r.getAttribute('data-year') !== yr) ok = false;
+        if (q && r.getAttribute('data-search').indexOf(q) === -1) ok = false;
+        r.hidden = !ok;
+        if (ok) n++;
+      });
+      countEl.textContent = n + ' document' + (n === 1 ? '' : 's') +
+        (activeType !== 'all' ? ' · ' + activeType : '') + (yr ? ' · ' + yr : '');
+      emptyEl.hidden = n !== 0;
+    }
+
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        chips.forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+        c.setAttribute('aria-pressed', 'true');
+        activeType = c.getAttribute('data-type');
+        render();
+      });
+    });
+    search.addEventListener('input', render);
+    year.addEventListener('change', render);
+    render();
+  })();
+</script>
+{{ end }}

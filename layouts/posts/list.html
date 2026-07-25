@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section>
+  <div class="wrap">
+    <div class="section-label">Notices &amp; News</div>
+    <h2 class="section-title">{{ .Title }}</h2>
+    <div class="notice-list">
+      {{ range .Pages.ByDate.Reverse }}
+      <article class="notice">
+        <div class="date">{{ .Date.Format "Jan 02, 2006" }}</div>
+        <div>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Params.urgent }} <span class="tag urgent">Urgent</span>{{ end }}</h3>
+          <p>{{ .Summary }}</p>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,15 @@
+{{ with hugo.Data.alert }}
+{{ if .enabled }}
+<div class="alert-bar{{ if eq .level "advisory" }} advisory{{ end }}" role="alert">
+  <div class="alert-inner">
+    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.3 3.9 1.8 18.5A2 2 0 0 0 3.5 21.5h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4.5"/><circle cx="12" cy="17.2" r=".7" fill="currentColor" stroke="none"/></svg>
+    <div class="alert-body">
+      <span class="alert-kicker">{{ .kicker }}{{ with .effective }} <span class="eff">{{ . }}</span>{{ end }}</span>
+      <span class="alert-title">{{ .title }}</span>
+      {{ with .detail }}<span class="alert-desc">{{ . }}</span>{{ end }}
+    </div>
+    {{ with .link }}<a class="alert-action" href="{{ .url }}">{{ .label }} &rarr;</a>{{ end }}
+  </div>
+</div>
+{{ end }}
+{{ end }}
