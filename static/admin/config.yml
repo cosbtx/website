@@ -24,6 +24,8 @@ public_folder: "/uploads"
 collections:
   # 1) Standalone documents — feed the searchable Register.
   - name: documents
+    editor:
+      preview: false
     label: "Documents (Register)"
     label_singular: "Document"
     description: "Agendas, minutes, ordinances, resolutions, budgets, RFPs."
@@ -51,6 +53,8 @@ collections:
 
   # 2) Meeting notices — structured fields; the Hugo template renders the legal boilerplate.
   - name: meetings
+    editor:
+      preview: false
     label: "Meeting Notices"
     label_singular: "Meeting Notice"
     description: "Fill the date, agenda, and (rarely) location. The standard notice wording is added automatically."
@@ -84,6 +88,8 @@ collections:
 
   # 3) Posts / notices — Markdown body + optional attachments.
   - name: posts
+    editor:
+      preview: false
     label: "Notices & News"
     label_singular: "Notice / Post"
     folder: "content/posts"
@@ -106,6 +112,8 @@ collections:
 
   # 3) Standalone pages — edit existing pages in place.
   - name: pages
+    editor:
+      preview: false
     label: "Pages"
     files:
       - name: about
@@ -143,6 +151,8 @@ collections:
 
   # Site settings edited as simple forms (no code).
   - name: settings
+    editor:
+      preview: false
     label: "Site Settings"
     files:
       - name: alert
