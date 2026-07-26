@@ -1,0 +1,44 @@
+name: Preview status bridge
+
+# Cloudflare Pages reports a preview deploy as a GitHub *check run*, but Decap's
+# show_preview_links reads legacy *commit statuses*. This bridges them: when the
+# "Cloudflare Pages" check completes, we read the preview URL from its summary and
+# post a commit status named "cloudflare preview deploy" (matching preview_context
+# in admin/config.yml) so Decap surfaces the in-editor preview link.
+#
+# check_run-triggered workflows always run from the default branch, so this covers
+# every draft branch's build. The subdomain (website-5j4) is the Pages project's;
+# update the grep if the project is renamed.
+
+on:
+  check_run:
+    types: [completed]
+
+permissions:
+  statuses: write
+
+jobs:
+  bridge:
+    if: >
+      github.event.check_run.name == 'Cloudflare Pages' &&
+      github.event.check_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post commit status with the preview URL
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SUMMARY: ${{ github.event.check_run.output.summary }}
+          SHA: ${{ github.event.check_run.head_sha }}
+          REPO: ${{ github.repository }}
+        run: |
+          URL=$(printf '%s' "$SUMMARY" | grep -oE 'https://[0-9a-z-]+\.website-5j4\.pages\.dev' | head -1)
+          if [ -z "$URL" ]; then
+            echo "No preview URL found in the check summary; nothing to post."
+            exit 0
+          fi
+          echo "Preview URL: $URL"
+          curl -fsS -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/statuses/$SHA" \
+            -d "$(printf '{"state":"success","context":"cloudflare preview deploy","target_url":"%s","description":"Preview ready"}' "$URL")"
