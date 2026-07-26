@@ -8,7 +8,7 @@ backend:
   name: github
   repo: cosbtx/website
   branch: main
-  base_url: https://AUTH-WORKER.workers.dev     # <-- deployed sveltia-cms-auth Worker
+  base_url: https://sveltia-cms-auth.cosb.workers.dev   # deployed sveltia-cms-auth Worker (verify exact URL in the dashboard)
 
 # Enables the no-GitHub local testing mode described above.
 local_backend: true
