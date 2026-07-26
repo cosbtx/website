@@ -22,6 +22,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Cloudflare Pages deploy hook
-        run: curl -fsS -X POST "$DEPLOY_HOOK"
         env:
           DEPLOY_HOOK: ${{ secrets.CF_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "CF_DEPLOY_HOOK secret not set yet; skipping (no rebuild triggered)."
+            exit 0
+          fi
+          curl -fsS -X POST "$DEPLOY_HOOK"
