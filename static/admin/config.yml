@@ -1,27 +1,21 @@
-# Sveltia CMS configuration.
-# ---------------------------------------------------------------------------
-# BEFORE THIS WORKS AGAINST GITHUB, fill in the two placeholders below once the
-# city's GitHub org + repo exist and the sveltia-cms-auth Worker is deployed.
-# Until then, use LOCAL mode: run `hugo server`, open http://localhost:1313/admin/
-# in Chrome/Edge, and choose "Work with Local Repository" (no GitHub needed).
+# Decap CMS configuration.
+# Auth is via the sveltia-cms-auth Worker (Decap-compatible GitHub OAuth).
+# Local testing needs `npx decap-server` running alongside `hugo server`.
 backend:
   name: github
   repo: cosbtx/website
   branch: main
-  base_url: https://sveltia-cms-auth.cosb.workers.dev   # deployed sveltia-cms-auth Worker (verify exact URL in the dashboard)
+  base_url: https://sveltia-cms-auth.cosb.workers.dev
+  preview_context: "cloudflare preview deploy"
 
 # Enables the no-GitHub local testing mode described above.
 local_backend: true
 
-# Draft -> preview -> publish. Each unpublished entry becomes a branch, and
-# Cloudflare Pages builds a preview URL for it. Review the real page, then publish.
+# Draft -> preview -> publish. Each unpublished entry becomes a branch; Cloudflare
+# builds a preview for it, and show_preview_links surfaces that URL in the editor,
+# read from the "cloudflare preview deploy" commit status set on the backend above.
 publish_mode: editorial_workflow
-
-# The in-editor preview pane cannot run Hugo templates, so it misrepresents
-# template-driven pages (meeting notices especially). Turn it off; use the
-# Cloudflare preview URL as the real preview.
-editor:
-  preview: false
+show_preview_links: true
 
 # Uploaded PDFs/images land in the repo (repo-first storage). Served at /uploads/.
 media_folder: "static/uploads"
