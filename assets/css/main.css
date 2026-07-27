@@ -375,3 +375,26 @@
 /* "Agenda coming soon" status (replaces the View agenda button before an agenda is posted) */
 .agenda-soon { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em; color: #CBDBCF; padding: 6px 0; }
 .agenda-soon::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--brass-soft); flex: none; }
+
+/* Meeting-notice footer (ADA + posting certification + contact) */
+.notice-footer { margin-top: 34px; padding-top: 18px; border-top: 3px double var(--brass); display: flex; flex-direction: column; gap: 10px; }
+.notice-footer p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.notice-footer a { color: var(--live-oak); }
+
+/* Constrain migrated inline images so they never overflow content */
+.prose img, .article img, .notice img, .notice-list img { max-width: 100%; height: auto; }
+
+/* ---------- Pager (list pagination) ---------- */
+.pager {
+  display: flex; align-items: center; justify-content: center; gap: 22px;
+  margin: 44px 0 8px; padding-top: 26px; border-top: 1px solid var(--line);
+  font-family: var(--sans);
+}
+.pager a {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 16px; border: 1px solid var(--line); border-radius: 8px;
+  color: var(--brass); font-weight: 600; font-size: 14px; text-decoration: none;
+  transition: background .15s ease, border-color .15s ease;
+}
+.pager a:hover { background: var(--brick-bg); border-color: var(--brass-soft); }
+.pager-count { font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); letter-spacing: .03em; }

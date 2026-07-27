@@ -7,7 +7,8 @@
 {{ $now := now }}
 {{ $today := time.AsTime (printf "%04d-%02d-%02dT00:00:00Z" $now.Year (int $now.Month) $now.Day) }}
 
-{{ $future := (where (where site.RegularPages "Section" "meetings") "Date" ">=" $today).ByDate }}
+{{ $mtgs := where (where site.RegularPages "Section" "meetings") "Params.meeting_type" "in" (slice "regular" "special") }}
+{{ $future := (where $mtgs "Date" ">=" $today).ByDate }}
 {{ $upcoming := false }}
 {{ if gt (len $future) 0 }}{{ $upcoming = index $future 0 }}{{ end }}
 

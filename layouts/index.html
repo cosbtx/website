@@ -9,15 +9,15 @@
       <aside class="latest">
         <div class="section-label">Latest Updates</div>
         <ul>
-          {{ $updates := where .Site.RegularPages "Section" "in" (slice "posts" "documents" "meetings") }}
+          {{ $updates := where .Site.RegularPages "Section" "in" (slice "posts" "meetings") }}
           {{ range first 4 $updates }}
           <li>
             <span class="d">{{ .Date.Format "Jan 02, 2006" }}</span>
-            <span class="t"><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Params.doctype }} <span class="tag t-{{ . }}">{{ index $labels . }}</span>{{ end }}{{ if eq .Section "meetings" }} <span class="tag t-agenda">Meeting</span>{{ end }}{{ if .Params.urgent }} <span class="tag urgent">Urgent</span>{{ end }}</span>
+            <span class="t"><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if eq .Section "meetings" }} <span class="tag t-agenda">Meeting</span>{{ end }}{{ if .Params.urgent }} <span class="tag urgent">Urgent</span>{{ end }}</span>
           </li>
           {{ end }}
         </ul>
-        <a class="more" href="/posts/">All notices &amp; documents &rarr;</a>
+        <a class="more" href="/posts/">All notices &amp; news &rarr;</a>
       </aside>
 
     </div>

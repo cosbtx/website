@@ -1,3 +1,3 @@
-+++
-title = "Public Meetings"
-+++
+---
+title: "Meetings"
+---

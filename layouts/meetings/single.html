@@ -1,21 +1,36 @@
 {{ define "main" }}
-{{/* NOTE: the boilerplate wording below is a placeholder. Have the city attorney
-     confirm the exact Texas Open Meetings Act notice language before going live. */}}
+{{ $d := .Date.Day }}
+{{ $suffix := "th" }}
+{{ if or (eq $d 1) (eq $d 21) (eq $d 31) }}{{ $suffix = "st" }}{{ else if or (eq $d 2) (eq $d 22) }}{{ $suffix = "nd" }}{{ else if or (eq $d 3) (eq $d 23) }}{{ $suffix = "rd" }}{{ end }}
+{{ $venue := or .Params.location .Site.Params.meetingPlace }}
+{{ $addr := or .Params.address (printf "%s in Spring Branch, Texas" .Site.Params.meetingAddress) }}
+{{ $body := or .Params.body "City Commission" }}
+{{ $type := or .Params.meeting_type "regular" }}
+{{ $action := printf "conduct a %s meeting to be held on" $type }}
+{{ if eq $type "hearing" }}{{ $action = "hold a public hearing on" }}{{ end }}
 <article class="wrap article">
   <div class="section-label">Public Meeting Notice</div>
   <h1 class="article-title">{{ .Title }}</h1>
-  <p class="article-date mono">Meeting date: {{ .Date.Format "Monday, January 2, 2006" }}</p>
   <div class="prose">
-    <p>Notice is hereby given that the City Commission of the City of Spring Branch, Texas will hold a {{ .Params.meeting_type }} meeting on <strong>{{ .Date.Format "Monday, January 2, 2006" }}</strong> at <strong>{{ .Params.time }}</strong> at <strong>{{ .Params.location }}</strong>.</p>
-    <p>The following items will be considered:</p>
+    <p>Notice is hereby given that the {{ $body }} of the City of Spring Branch, Texas will {{ $action }} the {{ $d }}{{ $suffix }} day of {{ .Date.Format "January 2006" }} at {{ .Params.time }} at:</p>
+    <p><strong>{{ $venue }}, <a href="https://www.google.com/maps/search/?api=1&amp;query={{ $addr | urlquery }}">{{ $addr }}</a>.</strong></p>
+    {{ with .Params.agenda }}
+    <p>The following items will be discussed.</p>
     <ol>
-      {{- range (strings.Split .Params.agenda "\n") -}}
+      {{- range (strings.Split . "\n") -}}
       {{- $item := replaceRE "^([-*•]|[0-9]+[.)])\\s+" "" (trim . " \t\r") -}}
       {{- with (trim $item " ") }}<li>{{ . }}</li>{{ end -}}
       {{- end -}}
     </ol>
-    <p>The City Commission reserves the right to meet in closed session on any agenda item as authorized by the Texas Open Meetings Act (Chapter 551, Texas Government Code).</p>
-    <p>The facility is wheelchair accessible. Persons with disabilities who require accommodation to participate should contact the city at <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a> in advance of the meeting.</p>
+    {{ end }}
+    {{ with .Params.minutes }}
+    <p><a href="{{ . }}">Meeting minutes (PDF)</a></p>
+    {{ end }}
+  </div>
+  <div class="notice-footer">
+    <p>Persons with disabilities who need auxiliary aids or accommodations to participate in this meeting should contact the City at <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a> at least 48 hours before the meeting.</p>
+    <p>This notice was posted{{ with .Params.posted }} on {{ (time.AsTime .).Format "January 2, 2006" }}{{ end }} in a place readily accessible to the public, in compliance with the Texas Open Meetings Act (Chapter 551, Texas Government Code).</p>
+    <p>Questions may be directed to <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>.</p>
   </div>
   <p style="margin-top:32px;"><a href="/posts/">&larr; All notices &amp; news</a></p>
 </article>
