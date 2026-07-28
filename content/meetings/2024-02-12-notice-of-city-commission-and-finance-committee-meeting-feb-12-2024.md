@@ -1,6 +1,7 @@
 ---
 title: "Notice of Joint Commission and Finance Committee Meeting"
 date: 2024-02-12
+minutes: "/uploads/documents/Minutes/Mtg-Minutes-02-12-24.pdf"
 posted: "2024-02-09"
 body: "City Commission and Finance Committee"
 meeting_type: "regular"

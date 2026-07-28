@@ -1,6 +1,7 @@
 ---
 title: "Notice of Regular Commission Meeting"
 date: 2025-05-12
+minutes: "/uploads/documents/Minutes/Mtg-Minutes-05-12-2025.pdf"
 posted: "2025-05-08"
 body: "City Commission"
 meeting_type: "regular"

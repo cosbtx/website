@@ -1,6 +1,7 @@
 ---
 title: "Notice of Public Hearing"
 date: 2023-08-14
+minutes: "/uploads/documents/Minutes/Mtg-Minutes-08-14-23.pdf"
 posted: "2023-08-10"
 body: "City Commission"
 meeting_type: "hearing"

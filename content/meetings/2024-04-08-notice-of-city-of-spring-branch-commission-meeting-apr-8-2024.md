@@ -1,6 +1,7 @@
 ---
 title: "Notice of Regular Commission Meeting"
 date: 2024-04-08
+minutes: "/uploads/documents/Minutes/Mtg-Minutes-04-08-24.pdf"
 posted: "2024-04-05"
 body: "City Commission"
 meeting_type: "regular"

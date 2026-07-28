@@ -1,6 +1,7 @@
 ---
 title: "Notice of Regular Commission Meeting"
 date: 2022-07-12
+minutes: "/uploads/documents/Minutes/Mtg-min-07-12-2022.pdf"
 posted: "2022-07-09"
 body: "City Commission"
 meeting_type: "regular"

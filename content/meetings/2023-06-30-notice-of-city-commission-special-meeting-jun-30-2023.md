@@ -1,6 +1,7 @@
 ---
 title: "Notice of Special Commission Meeting"
 date: 2023-06-30
+minutes: "/uploads/documents/Minutes/SpecialMtg-Minutes-06-30-23.pdf"
 posted: "2023-06-27"
 body: "City Commission"
 meeting_type: "special"

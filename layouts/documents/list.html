@@ -1,10 +1,31 @@
 {{ define "main" }}
 {{ $labels := dict "agenda" "Agenda" "minutes" "Minutes" "ordinance" "Ordinance" "resolution" "Resolution" "financial" "Financial" "rfp" "RFP" }}
+
+{{/* Build one combined row set: standalone documents + each meeting's agenda and minutes. */}}
+{{ $rows := slice }}
+{{ range (where .Site.RegularPages "Section" "documents") }}
+  {{ $rows = $rows | append (dict "date" .Date "title" .Title "type" .Params.doctype "num" (default "" .Params.number) "url" .Params.file "action" "PDF") }}
+{{ end }}
+{{ range (where .Site.RegularPages "Section" "meetings") }}
+  {{ $p := . }}
+  {{ $aurl := $p.RelPermalink }}{{ $aact := "View" }}{{ $hasAgenda := true }}
+  {{ if $p.Params.archived }}
+    {{ if $p.Params.agenda_pdf }}{{ $aurl = $p.Params.agenda_pdf }}{{ $aact = "PDF" }}{{ else }}{{ $hasAgenda = false }}{{ end }}
+  {{ end }}
+  {{ if $hasAgenda }}
+    {{ $rows = $rows | append (dict "date" $p.Date "title" $p.Title "type" "agenda" "num" "" "url" $aurl "action" $aact) }}
+  {{ end }}
+  {{ with $p.Params.minutes }}
+    {{ $rows = $rows | append (dict "date" $p.Date "title" (printf "Minutes, %s" ($p.Date.Format "January 2, 2006")) "type" "minutes" "num" "" "url" . "action" "PDF") }}
+  {{ end }}
+{{ end }}
+{{ $rows = sort $rows "date" "desc" }}
+
 <section class="register" id="documents">
   <div class="wrap">
     <div class="section-label">Public Register</div>
     <h2 class="section-title">Documents &amp; Records</h2>
-    <p class="intro">Every agenda, set of minutes, ordinance, resolution, budget, and RFP the city publishes — in one searchable place, newest first. Search by keyword, or filter by type and year.</p>
+    <p class="intro">Every agenda, set of minutes, ordinance, resolution, budget, and RFP the city publishes, in one searchable place, newest first. Search by keyword, or filter by type and year.</p>
 
     <div class="toolbar">
       <label class="search-box">
@@ -13,7 +34,7 @@
       </label>
       <select class="select" id="yearFilter" aria-label="Filter by year">
         <option value="">All years</option>
-        {{ range (.Pages.GroupByDate "2006") }}<option value="{{ .Key }}">{{ .Key }}</option>{{ end }}
+        {{ range seq (now.Year) -1 2015 }}<option value="{{ . }}">{{ . }}</option>{{ end }}
       </select>
     </div>
 
@@ -36,19 +57,16 @@
             <th style="width:110px;">Date</th>
             <th>Document</th>
             <th style="width:120px;">Type</th>
-            <th class="h-size" style="width:80px;text-align:right;">Size</th>
-            <th style="width:120px;"></th>
+            <th style="width:110px;"></th>
           </tr>
         </thead>
         <tbody id="docBody">
-          {{ range .Pages.ByDate.Reverse }}
-          <tr data-type="{{ .Params.doctype }}" data-year="{{ .Date.Format "2006" }}" data-search="{{ lower .Title }} {{ lower .Params.docnum }} {{ .Params.doctype }}">
-            <td class="td-date">{{ .Date.Format "Jan 02, 2006" }}</td>
-            <td class="td-title">{{ .Title }}{{ with .Params.docnum }}<span class="docno">{{ . }}</span>{{ end }}</td>
-            <td><span class="tag t-{{ .Params.doctype }}">{{ index $labels .Params.doctype }}</span></td>
-            <td class="td-size">{{ with .Params.filesize }}{{ . }}{{ else }}PDF{{ end }}</td>
-            <td>{{ with .Params.file }}<a class="dl" href="{{ . }}" aria-label="Download {{ $.Title }}">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg> PDF</a>{{ end }}</td>
+          {{ range $rows }}
+          <tr data-type="{{ .type }}" data-year="{{ .date.Format "2006" }}" data-search="{{ lower .title }} {{ lower .num }} {{ .type }}">
+            <td class="td-date">{{ .date.Format "Jan 02, 2006" }}</td>
+            <td class="td-title">{{ .title }}{{ with .num }}<span class="docno">{{ . }}</span>{{ end }}</td>
+            <td><span class="tag t-{{ .type }}">{{ index $labels .type }}</span></td>
+            <td>{{ if .url }}<a class="dl" href="{{ .url }}">{{ if eq .action "PDF" }}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg> {{ else }}<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg> {{ end }}{{ .action }}</a>{{ end }}</td>
           </tr>
           {{ end }}
         </tbody>
@@ -80,7 +98,7 @@
         r.hidden = !ok;
         if (ok) n++;
       });
-      countEl.textContent = n + ' document' + (n === 1 ? '' : 's') +
+      countEl.textContent = n + ' record' + (n === 1 ? '' : 's') +
         (activeType !== 'all' ? ' · ' + activeType : '') + (yr ? ' · ' + yr : '');
       emptyEl.hidden = n !== 0;
     }

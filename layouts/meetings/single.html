@@ -12,6 +12,14 @@
   <div class="section-label">Public Meeting Notice</div>
   <h1 class="article-title">{{ .Title }}</h1>
   <div class="prose">
+    {{ if .Params.archived }}
+    <p>{{ $body }} of the City of Spring Branch, Texas, held {{ .Date.Format "Monday, January 2, 2006" }} at {{ .Params.time }} at {{ $venue }}.</p>
+    <p>This is an archived record. The full notice and agenda, and the approved minutes where available, are on file below.</p>
+    <ul class="record-files">
+      {{ with .Params.agenda_pdf }}<li><a href="{{ . }}">Notice &amp; agenda (PDF)</a></li>{{ end }}
+      {{ with .Params.minutes }}<li><a href="{{ . }}">Minutes (PDF)</a></li>{{ end }}
+    </ul>
+    {{ else }}
     <p>Notice is hereby given that the {{ $body }} of the City of Spring Branch, Texas will {{ $action }} the {{ $d }}{{ $suffix }} day of {{ .Date.Format "January 2006" }} at {{ .Params.time }} at:</p>
     <p><strong>{{ $venue }}, <a href="https://www.google.com/maps/search/?api=1&amp;query={{ $addr | urlquery }}">{{ $addr }}</a>.</strong></p>
     {{ with .Params.agenda }}
@@ -25,6 +33,7 @@
     {{ end }}
     {{ with .Params.minutes }}
     <p><a href="{{ . }}">Meeting minutes (PDF)</a></p>
+    {{ end }}
     {{ end }}
   </div>
   <div class="notice-footer">

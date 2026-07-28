@@ -1,6 +1,7 @@
 ---
 title: "Notice of Special Commission Meeting"
 date: 2024-09-23
+minutes: "/uploads/documents/Minutes/Special-Min-09-23-24.pdf"
 posted: "2024-09-20"
 body: "City Commission"
 meeting_type: "special"
