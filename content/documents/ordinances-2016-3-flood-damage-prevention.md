@@ -1,5 +1,5 @@
 ---
-title: "Ordinance 2016-3: Flood DAmage Prevention"
+title: "Ordinance 2016-3: Flood Damage Prevention"
 date: 2016-01-01
 doctype: "ordinance"
 number: "2016-3"

@@ -13,8 +13,8 @@
   <h1 class="article-title">{{ .Title }}</h1>
   <div class="prose">
     {{ if .Params.archived }}
-    <p>{{ $body }} of the City of Spring Branch, Texas, held {{ .Date.Format "Monday, January 2, 2006" }} at {{ .Params.time }} at {{ $venue }}.</p>
-    <p>This is an archived record. The full notice and agenda, and the approved minutes where available, are on file below.</p>
+    <p>{{ $body }} of the City of Spring Branch, Texas. Meeting held {{ .Date.Format "Monday, January 2, 2006" }}.</p>
+    <p>This is an archived record. The notice and agenda, and the approved minutes where available, are on file below.</p>
     <ul class="record-files">
       {{ with .Params.agenda_pdf }}<li><a href="{{ . }}">Notice &amp; agenda (PDF)</a></li>{{ end }}
       {{ with .Params.minutes }}<li><a href="{{ . }}">Minutes (PDF)</a></li>{{ end }}

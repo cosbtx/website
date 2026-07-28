@@ -1,5 +1,5 @@
 ---
-title: "Ordinance 2016-8: Adopting Taxd Rate"
+title: "Ordinance 2016-8: Adopting Tax Rate"
 date: 2016-01-01
 doctype: "ordinance"
 number: "2016-8"

@@ -9,5 +9,5 @@ location: "Fire Station #6"
 address: "9850 FM 311 in Spring Branch, Texas"
 notify: false
 archived: true
-agenda_pdf: "/uploads/documents/Agendas/2016-10-11-Notice-and-Agenda.docx"
+agenda_pdf: "/uploads/documents/Agendas/2016-10-11-Notice-and-Agenda.pdf"
 ---
