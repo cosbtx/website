@@ -1,16 +1,18 @@
 ---
 title: "Elections"
 ---
-The City of Spring Branch holds its general election on the May uniform election date. The Mayor and two City Commissioners are elected at large, each to a two-year term.
+The City of Spring Branch holds a general election each May, on the uniform election date set by the State of Texas. The Mayor and two City Commissioners are elected at large to two-year terms, staggered so the seats do not all come up in the same year.
 
-## Offices on the ballot
+## Offices and terms
 
-- **Mayor** — two-year term
-- **City Commissioner** — two seats, each a two-year term
+- **Mayor** — a two-year term, elected in **odd-numbered years** (for example, 2025 and 2027).
+- **City Commissioner** — two seats, each a two-year term, elected in **even-numbered years** (for example, 2026 and 2028).
 
-## When elections are held
+Because the two offices are staggered, the city holds an election on the May uniform election date every year.
 
-City elections are held on the **May uniform election date** set by the State of Texas. When an election is called, the election date and the candidate filing period are announced in [Notices &amp; News](/posts/), and the official election order is filed in the [Documents Register](/documents/).
+## When an election is called
+
+The election date and the candidate filing period are announced in [Notices &amp; News](/posts/), and the official election order is filed in the [Documents Register](/documents/).
 
 ## Running for office
 
