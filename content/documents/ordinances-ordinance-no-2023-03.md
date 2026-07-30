@@ -1,5 +1,5 @@
 ---
-title: "Ordinance 2023-3"
+title: "Ordinance 2023-3: Homestead Tax Exemptions"
 date: 2023-01-01
 doctype: "ordinance"
 number: "2023-3"

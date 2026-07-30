@@ -1,5 +1,5 @@
 ---
-title: "Ordinance 2023-2"
+title: "Ordinance 2023-2: Over-65 and Disabled Homestead Exemption"
 date: 2023-01-01
 doctype: "ordinance"
 number: "2023-2"
