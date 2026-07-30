@@ -401,13 +401,20 @@
 
 /* ---------- Utility / provider cards ---------- */
 .providers { list-style: none; margin: 10px 0 4px; padding: 0; display: flex; flex-wrap: wrap; gap: 14px; }
-.providers li { margin: 0; }
+.providers li { display: contents; }
 .providers a {
   display: flex; align-items: center; gap: 13px;
-  padding: 10px 16px 10px 12px; border: 1px solid var(--line); border-radius: 10px;
+  height: 60px; box-sizing: border-box; padding: 0 16px 0 10px;
+  border: 1px solid var(--line); border-radius: 10px;
   background: var(--paper-2); color: var(--ink); text-decoration: none; font-weight: 600;
   transition: border-color .15s ease, box-shadow .15s ease;
 }
 .providers a:hover { border-color: var(--brass-soft); box-shadow: var(--shadow); }
 .providers span { white-space: nowrap; }
-.providers img { height: 40px; width: 76px; object-fit: contain; background: #fff; border-radius: 4px; padding: 4px; flex: none; }
+.providers img { height: 40px; width: 76px; box-sizing: border-box; object-fit: contain; background: #fff; border-radius: 4px; padding: 4px; flex: none; }
+
+/* ---------- Contact info columns ---------- */
+.info-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px 32px; margin: 12px 0 30px; }
+.info-cols h3 { margin: 0 0 6px; }
+.info-cols p { margin: 0 0 8px; }
+.info-cols .muted { color: var(--ink-soft); font-size: 14px; line-height: 1.5; }

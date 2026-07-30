@@ -1,36 +1,25 @@
 ---
 title: "Elections"
 ---
-<p><strong>City of Spring Branch Election Information</strong></p>
-<p><strong> </strong></p>
-<p>The Mayor and City Commissioners are elected to two-year terms. The Mayor’s term expires in November of 2021 and the two Commissioners terms expire the following year (2022). Elections are held in May each year. Key dates for the 2021 and 2022 elections are listed below, including deadlines for submitting applications and election dates. Questions can be directed to the Mayor’s office or to the Comal County elections office</p>
-<p>&nbsp;</p>
-<p><strong>Saturday, May 2, 2020 – Uniform Election Date (Limited)</strong></p>
-<p>&nbsp;</p>
-<table width="85%">
-<tbody>
-<tr>
-<td width="50%">First Day to File for Place on General Election Ballot (for local political subdivisions ONLY)<a href="https://www.sos.texas.gov/elections/voter/important-election-dates.shtml#f1-1"><sup>1</sup></a></td>
-<td width="50%">Wednesday, January 13, 2021</td>
-</tr>
-<tr>
-<td width="50%">Last Day to File for Place on General Election Ballot (for local political subdivisions ONLY)<a href="https://www.sos.texas.gov/elections/voter/important-election-dates.shtml#f2-1"><sup>2</sup></a></td>
-<td width="50%">Friday, February 12, 2021 at 5:00 p.m.</td>
-</tr>
-</tbody>
-</table>
-<p><strong> </strong></p>
-<p><strong>   Saturday, May 7, 2022 &#8211; Uniform Election Date (Limited)</strong></p>
-<p>&nbsp;</p>
-<table width="85%">
-<tbody>
-<tr>
-<td width="50%">First Day to File for a Place on the General Election Ballot (Local Political Subdivisions Only)<a href="https://www.sos.texas.gov/elections/voter/important-election-dates.shtml#f1-1-2"><sup>1</sup></a></td>
-<td width="50%">Wednesday, January 19, 2022</td>
-</tr>
-<tr>
-<td width="50%">Last Day to File for a Place on the General Election Ballot (Local Political Subdivisions Only)<a href="https://www.sos.texas.gov/elections/voter/important-election-dates.shtml#f2-1-2">2</a></td>
-<td width="50%">Friday, February 18, 2022 at 5:00 p.m.</td>
-</tr>
-</tbody>
-</table>
+The City of Spring Branch holds its general election on the May uniform election date. The Mayor and two City Commissioners are elected at large, each to a two-year term.
+
+## Offices on the ballot
+
+- **Mayor** — two-year term
+- **City Commissioner** — two seats, each a two-year term
+
+## When elections are held
+
+City elections are held on the **May uniform election date** set by the State of Texas. When an election is called, the election date and the candidate filing period are announced in [Notices &amp; News](/posts/), and the official election order is filed in the [Documents Register](/documents/).
+
+## Running for office
+
+To run, a candidate files an **Application for a Place on the Ballot** with the city during the filing period, which opens and closes on dates set by state law (generally mid-January through mid-February for a May election). Candidates must be registered voters who live within the city limits. The Texas Secretary of State publishes the [important election dates](https://www.sos.texas.gov/elections/voter/important-election-dates.shtml) for each cycle.
+
+## Registering and voting
+
+Voter registration, polling places, and early voting are administered by Comal County. Check your registration at [VoteTexas.gov](https://www.votetexas.gov/), and find polling locations and sample ballots through the [Comal County Elections office](https://www.co.comal.tx.us/).
+
+## Questions
+
+Election questions may be directed to the city at [info@cityofspringbranch.org](mailto:info@cityofspringbranch.org) or to the Comal County Elections office.
