@@ -84,36 +84,43 @@
     var chips = Array.prototype.slice.call(document.querySelectorAll('#typeChips .chip'));
     var countEl = document.getElementById('count');
     var emptyEl = document.getElementById('empty');
-    var activeType = 'all';
+    var activeTypes = ['all'];
+
+    function setTypes(types) {
+      activeTypes = (types && types.length) ? types : ['all'];
+      chips.forEach(function (x) {
+        x.setAttribute('aria-pressed', activeTypes.indexOf(x.getAttribute('data-type')) !== -1 ? 'true' : 'false');
+      });
+      render();
+    }
 
     function render() {
       var q = search.value.trim().toLowerCase();
       var yr = year.value;
+      var all = activeTypes.indexOf('all') !== -1;
       var n = 0;
       rows.forEach(function (r) {
         var ok = true;
-        if (activeType !== 'all' && r.getAttribute('data-type') !== activeType) ok = false;
+        if (!all && activeTypes.indexOf(r.getAttribute('data-type')) === -1) ok = false;
         if (yr && r.getAttribute('data-year') !== yr) ok = false;
         if (q && r.getAttribute('data-search').indexOf(q) === -1) ok = false;
         r.hidden = !ok;
         if (ok) n++;
       });
       countEl.textContent = n + ' record' + (n === 1 ? '' : 's') +
-        (activeType !== 'all' ? ' · ' + activeType : '') + (yr ? ' · ' + yr : '');
+        (!all ? ' · ' + activeTypes.join(' + ') : '') + (yr ? ' · ' + yr : '');
       emptyEl.hidden = n !== 0;
     }
 
     chips.forEach(function (c) {
-      c.addEventListener('click', function () {
-        chips.forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
-        c.setAttribute('aria-pressed', 'true');
-        activeType = c.getAttribute('data-type');
-        render();
-      });
+      c.addEventListener('click', function () { setTypes([c.getAttribute('data-type')]); });
     });
     search.addEventListener('input', render);
     year.addEventListener('change', render);
-    render();
+
+    // Deep link: /documents/?type=ordinance,resolution
+    var tp = new URLSearchParams(location.search).get('type');
+    setTypes(tp ? tp.split(',').map(function (s) { return s.trim(); }) : ['all']);
   })();
 </script>
 {{ end }}
