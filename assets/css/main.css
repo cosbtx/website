@@ -215,6 +215,9 @@
   .tag.t-agenda { color: var(--live-oak); border-color: var(--live-oak); }
   .tag.t-minutes { color: var(--brass); border-color: var(--brass); }
   .tag.t-ordinance { color: var(--brick); border-color: var(--brick); }
+  .tag.t-notice { color: var(--ink-soft); border-color: var(--line); }
+  .tag.t-emergency { background: var(--brick-bg); border-color: var(--alert); color: var(--alert); }
+  .tag.t-community { color: var(--advisory); border-color: var(--advisory); }
 
   aside.card {
     background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 24px; box-shadow: var(--shadow); align-self: start;

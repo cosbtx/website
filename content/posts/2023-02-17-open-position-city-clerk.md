@@ -1,5 +1,6 @@
 ---
 title: "Open Position – City Clerk"
+category: "notice"
 date: 2023-02-17T17:21:04
 slug: "open-position-city-clerk"
 aliases: ["/2023/02/17/open-position-city-clerk/"]

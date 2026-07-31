@@ -1,5 +1,6 @@
 ---
 title: "Truth in Taxation Website"
+category: "notice"
 date: 2022-08-11T13:29:56
 slug: "truth-in-taxation-website"
 aliases: ["/2022/08/11/truth-in-taxation-website/"]

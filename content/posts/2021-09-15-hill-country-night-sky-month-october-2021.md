@@ -1,5 +1,6 @@
 ---
 title: "Hill Country Night Sky Month – October 2021"
+category: "community"
 date: 2021-09-15T16:44:03
 slug: "hill-country-night-sky-month-october-2021"
 aliases: ["/2021/09/15/hill-country-night-sky-month-october-2021/"]

@@ -1,5 +1,6 @@
 ---
 title: "Certification of Unopposed Candidates – Mayor – 2021"
+category: "notice"
 date: 2021-02-23T00:13:09
 slug: "certification-of-unopposed-candidates-mayor-2021"
 aliases: ["/2021/02/23/certification-of-unopposed-candidates-mayor-2021/"]

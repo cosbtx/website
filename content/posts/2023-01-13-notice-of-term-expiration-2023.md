@@ -1,5 +1,6 @@
 ---
 title: "Notice of Term Expiration – 2023"
+category: "notice"
 date: 2023-01-13T15:11:04
 slug: "notice-of-term-expiration-2023"
 aliases: ["/2023/01/13/notice-of-term-expiration-2023/"]

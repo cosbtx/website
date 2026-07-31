@@ -1,5 +1,6 @@
 ---
 title: "Recording – Emergency Meeting – 03-31-2020"
+category: "notice"
 date: 2020-04-01T11:55:08
 slug: "recording-emergency-meeting-03-31-2020"
 aliases: ["/2020/04/01/recording-emergency-meeting-03-31-2020/"]

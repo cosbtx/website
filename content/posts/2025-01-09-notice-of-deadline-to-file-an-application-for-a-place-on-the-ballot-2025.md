@@ -1,5 +1,6 @@
 ---
 title: "Notice of Deadline to File an Application for a Place on the Ballot – 2025"
+category: "notice"
 date: 2025-01-09T23:31:51
 slug: "notice-of-deadline-to-file-an-application-for-a-place-on-the-ballot-2025"
 aliases: ["/2025/01/09/notice-of-deadline-to-file-an-application-for-a-place-on-the-ballot-2025/"]

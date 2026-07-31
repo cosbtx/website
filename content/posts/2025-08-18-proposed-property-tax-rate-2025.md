@@ -1,5 +1,6 @@
 ---
 title: "Proposed Property Tax Rate – 2025"
+category: "notice"
 date: 2025-08-18T17:16:11
 slug: "proposed-property-tax-rate-2025"
 aliases: ["/2025/08/18/proposed-property-tax-rate-2025/"]

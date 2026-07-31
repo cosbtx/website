@@ -1,5 +1,6 @@
 ---
 title: "Disaster Declaration – March, 2020"
+category: "notice"
 date: 2020-03-25T23:40:27
 slug: "disaster-declaration-march-2020"
 aliases: ["/2020/03/25/disaster-declaration-march-2020/"]

@@ -1,5 +1,6 @@
 ---
 title: "Spring Branch Music Fest – feat Kevin Galloway and Garrett & Stewart Mann"
+category: "community"
 date: 2021-05-12T15:19:13
 slug: "spring-branch-music-fest-feat-kevin-galloway-and-garrett-stewart-mann"
 aliases: ["/2021/05/12/spring-branch-music-fest-feat-kevin-galloway-and-garrett-stewart-mann/"]

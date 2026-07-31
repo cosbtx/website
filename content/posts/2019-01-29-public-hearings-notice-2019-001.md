@@ -1,5 +1,6 @@
 ---
 title: "Public Hearings Notice – 2019-001"
+category: "notice"
 date: 2019-01-29T02:43:29
 slug: "public-hearings-notice-2019-001"
 aliases: ["/2019/01/29/public-hearings-notice-2019-001/"]

@@ -13,7 +13,7 @@
           {{ range first 4 $updates }}
           <li>
             <span class="d">{{ .Date.Format "Jan 02, 2006" }}</span>
-            <span class="t"><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if eq .Section "meetings" }} <span class="tag t-agenda">Meeting</span>{{ end }}{{ if .Params.urgent }} <span class="tag urgent">Urgent</span>{{ end }}</span>
+            <span class="t"><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if eq .Section "meetings" }} <span class="tag t-agenda">Meeting</span>{{ else if eq .Section "posts" }}{{ $c := or .Params.category "notice" }} <span class="tag t-{{ $c }}">{{ index (dict "notice" "Notice" "emergency" "Emergency" "community" "Community") $c }}</span>{{ end }}</span>
           </li>
           {{ end }}
         </ul>

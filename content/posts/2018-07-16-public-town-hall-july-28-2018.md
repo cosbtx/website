@@ -1,5 +1,6 @@
 ---
 title: "Public Town Hall – July 28, 2018"
+category: "notice"
 date: 2018-07-16T16:03:26
 slug: "public-town-hall-july-28-2018"
 aliases: ["/2018/07/16/public-town-hall-july-28-2018/"]

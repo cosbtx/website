@@ -1,5 +1,6 @@
 ---
 title: "Proposed Tax Rate – 2018"
+category: "notice"
 date: 2018-08-11T17:33:37
 slug: "proposed-tax-rate-2018"
 aliases: ["/2018/08/11/proposed-tax-rate-2018/"]

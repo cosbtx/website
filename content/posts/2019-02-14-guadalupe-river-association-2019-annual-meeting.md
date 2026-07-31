@@ -1,5 +1,6 @@
 ---
 title: "Guadalupe River Association – 2019 Annual Meeting"
+category: "community"
 date: 2019-02-14T19:58:22
 slug: "guadalupe-river-association-2019-annual-meeting"
 aliases: ["/2019/02/14/guadalupe-river-association-2019-annual-meeting/"]

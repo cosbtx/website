@@ -1,5 +1,6 @@
 ---
 title: "Mandatory Evacuation – July 16, 2026"
+category: "emergency"
 date: 2026-07-16T23:19:26
 slug: "mandatory-evacuation-july-16-2006"
 aliases: ["/2026/07/16/mandatory-evacuation-july-16-2006/"]

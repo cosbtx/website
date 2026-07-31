@@ -1,5 +1,6 @@
 ---
 title: "Emergency Resolution – 03-31-2020"
+category: "notice"
 date: 2020-04-01T11:55:35
 slug: "emergency-resolution-03-31-2020"
 aliases: ["/2020/04/01/emergency-resolution-03-31-2020/"]

@@ -1,5 +1,6 @@
 ---
 title: "Proposed Lighting Ordinance"
+category: "notice"
 date: 2019-12-10T16:18:12
 slug: "proposed-lighting-ordinance"
 aliases: ["/2019/12/10/proposed-lighting-ordinance/"]

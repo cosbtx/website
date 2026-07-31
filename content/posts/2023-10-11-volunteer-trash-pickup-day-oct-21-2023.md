@@ -1,5 +1,6 @@
 ---
 title: "Volunteer Trash Pickup Day – Oct 21, 2023"
+category: "community"
 date: 2023-10-11T15:22:56
 slug: "volunteer-trash-pickup-day-oct-21-2023"
 aliases: ["/2023/10/11/volunteer-trash-pickup-day-oct-21-2023/"]

@@ -1,5 +1,6 @@
 ---
 title: "Notice of Meeting Cancellation – Jan 11, 2022"
+category: "notice"
 date: 2022-01-11T17:47:56
 slug: "notice-of-meeting-cancellation-jan-11-2022"
 aliases: ["/2022/01/11/notice-of-meeting-cancellation-jan-11-2022/"]

@@ -1,5 +1,6 @@
 ---
 title: "County Executive Order"
+category: "notice"
 date: 2020-07-01T19:26:50
 slug: "county-executive-order"
 aliases: ["/2020/07/01/county-executive-order/"]

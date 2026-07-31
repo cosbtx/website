@@ -1,5 +1,6 @@
 ---
 title: "Proclamation – October 2020 – Hill Country Night Sky Month"
+category: "community"
 date: 2020-10-10T01:41:57
 slug: "proclamation-october-2020-hill-country-night-sky-month"
 aliases: ["/2020/10/10/proclamation-october-2020-hill-country-night-sky-month/"]

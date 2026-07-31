@@ -1,5 +1,6 @@
 ---
 title: "Notice of Meeting to Vote on Tax Rate – August 17, 2020"
+category: "notice"
 date: 2020-08-12T22:30:23
 slug: "notice-of-meeting-to-vote-on-tax-rate-2020-08-17"
 aliases: ["/2020/08/12/notice-of-meeting-to-vote-on-tax-rate-2020-08-17/"]

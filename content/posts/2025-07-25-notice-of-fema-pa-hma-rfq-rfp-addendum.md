@@ -1,5 +1,6 @@
 ---
 title: "Notice of FEMA PA/HMA RFQ / RFP / Addendum"
+category: "notice"
 date: 2025-07-25T19:59:21
 slug: "notice-of-fema-pa-hma-rfq-rfp-addendum"
 aliases: ["/2025/07/25/notice-of-fema-pa-hma-rfq-rfp-addendum/"]

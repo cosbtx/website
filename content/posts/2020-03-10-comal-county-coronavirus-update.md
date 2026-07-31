@@ -1,5 +1,6 @@
 ---
 title: "Comal County Coronavirus Update"
+category: "notice"
 date: 2020-03-10T01:35:16
 slug: "comal-county-coronavirus-update"
 aliases: ["/2020/03/10/comal-county-coronavirus-update/"]

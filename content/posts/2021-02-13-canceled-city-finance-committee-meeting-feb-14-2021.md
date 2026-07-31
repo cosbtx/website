@@ -1,5 +1,6 @@
 ---
 title: "Canceled – City Finance Committee Meeting – Feb 14, 2021"
+category: "notice"
 date: 2021-02-13T22:14:49
 slug: "canceled-city-finance-committee-meeting-feb-14-2021"
 aliases: ["/2021/02/13/canceled-city-finance-committee-meeting-feb-14-2021/"]

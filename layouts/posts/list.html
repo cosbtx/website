@@ -1,19 +1,54 @@
 {{ define "main" }}
+{{ $labels := dict "notice" "Notice" "emergency" "Emergency" "community" "Community" }}
 <section>
   <div class="wrap">
     <div class="section-label">Notices &amp; News</div>
     <h2 class="section-title">{{ .Title }}</h2>
-    <div class="notice-list">
+
+    <div class="chips" id="catChips" role="group" aria-label="Filter by type">
+      <button class="chip" data-cat="all" aria-pressed="true">All</button>
+      <button class="chip" data-cat="notice" aria-pressed="false">Notices</button>
+      <button class="chip" data-cat="emergency" aria-pressed="false">Emergency</button>
+      <button class="chip" data-cat="community" aria-pressed="false">Community</button>
+    </div>
+
+    <div class="notice-list" id="postList">
       {{ range .Pages.ByDate.Reverse }}
-      <article class="notice">
+      {{ $cat := or .Params.category "notice" }}
+      <article class="notice" data-cat="{{ $cat }}">
         <div class="date">{{ .Date.Format "Jan 02, 2006" }}</div>
         <div>
-          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Params.urgent }} <span class="tag urgent">Urgent</span>{{ end }}</h3>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="tag t-{{ $cat }}">{{ index $labels $cat }}</span></h3>
           <p>{{ .Summary }}</p>
         </div>
       </article>
       {{ end }}
     </div>
+    <div class="empty" id="postEmpty" hidden>No items in this category.</div>
   </div>
 </section>
+
+<script>
+  (function () {
+    var rows = Array.prototype.slice.call(document.querySelectorAll('#postList .notice'));
+    var chips = Array.prototype.slice.call(document.querySelectorAll('#catChips .chip'));
+    var empty = document.getElementById('postEmpty');
+    function render(cat) {
+      var n = 0;
+      rows.forEach(function (r) {
+        var ok = cat === 'all' || r.getAttribute('data-cat') === cat;
+        r.hidden = !ok; if (ok) n++;
+      });
+      empty.hidden = n !== 0;
+    }
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        chips.forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+        c.setAttribute('aria-pressed', 'true');
+        render(c.getAttribute('data-cat'));
+      });
+    });
+    render('all');
+  })();
+</script>
 {{ end }}

@@ -1,5 +1,6 @@
 ---
 title: "TCEQ Public Meeting – Aug 11, 2022"
+category: "notice"
 date: 2022-07-08T16:58:46
 slug: "tceq-public-meeting-aug-11-2022"
 aliases: ["/2022/07/08/tceq-public-meeting-aug-11-2022/"]

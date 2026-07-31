@@ -1,5 +1,6 @@
 ---
 title: "Save the Date – 2019 Hill Country Fun Fest"
+category: "community"
 date: 2019-01-23T19:31:28
 slug: "save-the-date-2019-hill-country-fun-fest"
 aliases: ["/2019/01/23/save-the-date-2019-hill-country-fun-fest/"]

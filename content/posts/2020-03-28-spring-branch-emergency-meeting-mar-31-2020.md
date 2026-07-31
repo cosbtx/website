@@ -1,5 +1,6 @@
 ---
 title: "Spring Branch Emergency Meeting – Mar 31, 2020"
+category: "notice"
 date: 2020-03-28T12:17:47
 slug: "spring-branch-emergency-meeting-mar-31-2020"
 aliases: ["/2020/03/28/spring-branch-emergency-meeting-mar-31-2020/"]

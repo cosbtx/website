@@ -1,5 +1,6 @@
 ---
 title: "Notice of Mayoral Election – May 2021"
+category: "notice"
 date: 2021-01-19T16:35:12
 slug: "notice-of-mayoral-election-may-2021"
 aliases: ["/2021/01/19/notice-of-mayoral-election-may-2021/"]

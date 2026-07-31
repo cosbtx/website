@@ -1,5 +1,6 @@
 ---
 title: "Water Quality Update from TWC"
+category: "notice"
 date: 2025-08-31T19:03:20
 slug: "water-quality-update-from-twc"
 aliases: ["/2025/08/31/water-quality-update-from-twc/"]

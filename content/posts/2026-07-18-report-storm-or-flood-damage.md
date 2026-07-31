@@ -1,5 +1,6 @@
 ---
 title: "Report Storm or Flood Damage"
+category: "notice"
 date: 2026-07-18T00:37:10
 slug: "report-storm-or-flood-damage"
 aliases: ["/2026/07/18/report-storm-or-flood-damage/"]

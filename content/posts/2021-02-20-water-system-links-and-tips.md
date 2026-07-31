@@ -1,5 +1,6 @@
 ---
 title: "Water System Links and Tips"
+category: "notice"
 date: 2021-02-20T02:06:45
 slug: "water-system-links-and-tips"
 aliases: ["/2021/02/20/water-system-links-and-tips/"]

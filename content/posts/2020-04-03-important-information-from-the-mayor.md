@@ -1,5 +1,6 @@
 ---
 title: "Important Information from the Mayor"
+category: "notice"
 date: 2020-04-03T00:13:31
 slug: "important-information-from-the-mayor"
 aliases: ["/2020/04/03/important-information-from-the-mayor/"]

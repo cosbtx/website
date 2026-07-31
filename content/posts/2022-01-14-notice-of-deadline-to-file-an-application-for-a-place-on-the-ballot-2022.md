@@ -1,5 +1,6 @@
 ---
 title: "Notice of Deadline to File an Application for a Place on the Ballot – 2022"
+category: "notice"
 date: 2022-01-14T21:53:10
 slug: "notice-of-deadline-to-file-an-application-for-a-place-on-the-ballot-2022"
 aliases: ["/2022/01/14/notice-of-deadline-to-file-an-application-for-a-place-on-the-ballot-2022/"]

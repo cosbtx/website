@@ -1,5 +1,6 @@
 ---
 title: "Notice of Workshop Meeting Cancellation – Mar 28, 2022"
+category: "notice"
 date: 2022-03-28T22:00:39
 slug: "notice-of-workshop-meeting-cancellation-mar-28-2022"
 aliases: ["/2022/03/28/notice-of-workshop-meeting-cancellation-mar-28-2022/"]

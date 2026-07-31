@@ -1,5 +1,6 @@
 ---
 title: "Notice – Meetings Cancelled"
+category: "notice"
 date: 2020-03-25T23:31:41
 slug: "notice-meetings-cancelled"
 aliases: ["/2020/03/25/notice-meetings-cancelled/"]

@@ -1,5 +1,6 @@
 ---
 title: "2019 Hill Country Fun Fest – 1st Planning Meeting"
+category: "community"
 date: 2019-01-23T19:39:11
 slug: "2019-hill-country-fun-fest-1st-planning-meeting"
 aliases: ["/2019/01/23/2019-hill-country-fun-fest-1st-planning-meeting/"]

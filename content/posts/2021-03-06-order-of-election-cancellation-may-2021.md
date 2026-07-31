@@ -1,5 +1,6 @@
 ---
 title: "Order of Election Cancellation – May 2021"
+category: "notice"
 date: 2021-03-06T16:10:36
 slug: "order-of-election-cancellation-may-2021"
 aliases: ["/2021/03/06/order-of-election-cancellation-may-2021/"]

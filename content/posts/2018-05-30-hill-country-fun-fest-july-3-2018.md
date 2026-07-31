@@ -1,5 +1,6 @@
 ---
 title: "Hill Country Fun Fest – July 3, 2018"
+category: "community"
 date: 2018-05-30T03:09:32
 slug: "hill-country-fun-fest-july-3-2018"
 aliases: ["/2018/05/30/hill-country-fun-fest-july-3-2018/"]

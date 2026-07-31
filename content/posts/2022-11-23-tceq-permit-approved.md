@@ -1,5 +1,6 @@
 ---
 title: "TCEQ Permit Approved"
+category: "notice"
 date: 2022-11-23T19:53:48
 slug: "tceq-permit-approved"
 aliases: ["/2022/11/23/tceq-permit-approved/"]

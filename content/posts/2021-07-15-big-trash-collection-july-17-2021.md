@@ -1,5 +1,6 @@
 ---
 title: "Big Trash Collection – July 17, 2021"
+category: "community"
 date: 2021-07-15T22:33:00
 slug: "big-trash-collection-july-17-2021"
 aliases: ["/2021/07/15/big-trash-collection-july-17-2021/"]

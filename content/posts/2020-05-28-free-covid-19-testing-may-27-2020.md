@@ -1,5 +1,6 @@
 ---
 title: "Free COVID-19 testing – May 27, 2020"
+category: "notice"
 date: 2020-05-28T12:03:56
 slug: "free-covid-19-testing-may-27-2020"
 aliases: ["/2020/05/28/free-covid-19-testing-may-27-2020/"]

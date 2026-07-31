@@ -1,5 +1,6 @@
 ---
 title: "Notice of Deadline to File Applications for Place on the Ballot – 2019-07"
+category: "notice"
 date: 2019-07-20T19:49:06
 slug: "notice-of-deadline-to-file-applications-for-place-on-the-ballot-2019-07"
 aliases: ["/2019/07/20/notice-of-deadline-to-file-applications-for-place-on-the-ballot-2019-07/"]

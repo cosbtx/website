@@ -1,5 +1,6 @@
 ---
 title: "Notice of Commissioner Election – May 2020"
+category: "notice"
 date: 2020-01-14T01:04:39
 slug: "notice-of-commissioner-election-may-2020"
 aliases: ["/2020/01/14/notice-of-commissioner-election-may-2020/"]
