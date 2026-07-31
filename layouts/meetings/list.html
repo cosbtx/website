@@ -1,27 +1,13 @@
-{{ define "main" }}
-{{ $paginator := .Paginate .Pages.ByDate.Reverse 25 }}
-<section>
-  <div class="wrap">
-    <div class="section-label">Public Meetings</div>
-    <h2 class="section-title">{{ .Title }}</h2>
-    <div class="notice-list">
-      {{ range $paginator.Pages }}
-      <article class="notice">
-        <div class="date">{{ .Date.Format "Jan 02, 2006" }}</div>
-        <div>
-          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          <p>{{ .Params.time }} &middot; {{ or .Params.location .Site.Params.meetingPlace }}</p>
-        </div>
-      </article>
-      {{ end }}
-    </div>
-    {{ if gt $paginator.TotalPages 1 }}
-    <nav class="pager">
-      {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">&larr; Newer</a>{{ end }}
-      <span class="pager-count">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
-      {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">Older &rarr;</a>{{ end }}
-    </nav>
-    {{ end }}
-  </div>
-</section>
-{{ end }}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0; url=/documents/?type=agenda,minutes">
+<link rel="canonical" href="/documents/">
+<title>Agendas &amp; Minutes &middot; {{ .Site.Title }}</title>
+</head>
+<body>
+<p>Redirecting to <a href="/documents/?type=agenda,minutes">Agendas &amp; Minutes in the Documents register</a>&hellip;</p>
+<script>window.location.replace("/documents/?type=agenda,minutes");</script>
+</body>
+</html>
