@@ -74,6 +74,6 @@ aliases: ["/local-businesses/"]
 <div class="siteorigin-widget-tinymce textwidget">
 	<p>&nbsp;</p>
 <p>Own a business in Spring Branch? Send us a link to info@cityofspringbranch.org and we'll post it here.</p>
-<p>Not sure if you're in our City Limits? Check the <a href="https://cityofspringbranch.org/about/maps/">City Map</a> to find out.</p>
+<p>Not sure if you're in our City Limits? Check the <a href="/about/maps/">City Map</a> to find out.</p>
 </div>
 </div></div></div></div></div>
