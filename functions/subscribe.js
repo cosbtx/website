@@ -13,18 +13,20 @@ function back(path, request) { return Response.redirect(new URL(path, request.ur
 function emailShell(origin, bodyHtml, footerExtra) {
   return `<!doctype html><html><body style="margin:0;padding:0;background:#ECEAE5;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ECEAE5;"><tr><td align="center" style="padding:28px 12px;">
-  <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid #D8D6CF;border-radius:12px;">
-    <tr><td style="background:#2A2E34;border-radius:12px 12px 0 0;padding:18px 26px;">
+  <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid #E4E2DC;border-radius:12px;">
+    <tr><td style="height:3px;background:#7A2E36;border-radius:12px 12px 0 0;font-size:0;line-height:0;">&nbsp;</td></tr>
+    <tr><td style="padding:18px 26px 14px;">
       <table role="presentation" cellpadding="0" cellspacing="0"><tr>
-        <td width="46" valign="middle"><img src="${origin}/img/city-seal.png" width="42" height="42" alt="" style="display:block;border-radius:8px;background:#ffffff;"></td>
-        <td valign="middle" style="padding-left:12px;">
-          <div style="font:600 10px/1 Arial,Helvetica,sans-serif;letter-spacing:.14em;color:#B26B72;text-transform:uppercase;">Official Municipal Website</div>
-          <div style="font:700 18px/1.2 Georgia,'Times New Roman',serif;color:#ffffff;padding-top:3px;">City of Spring Branch, Texas</div>
+        <td width="42" valign="middle"><img src="${origin}/img/city-seal.png" width="38" height="38" alt="" style="display:block;border-radius:7px;"></td>
+        <td valign="middle" style="padding-left:11px;">
+          <div style="font:600 9.5px/1 Arial,Helvetica,sans-serif;letter-spacing:.14em;color:#7A2E36;text-transform:uppercase;">Official Municipal Website</div>
+          <div style="font:700 16px/1.2 Georgia,'Times New Roman',serif;color:#22252A;padding-top:2px;">City of Spring Branch, Texas</div>
         </td>
       </tr></table>
     </td></tr>
-    <tr><td style="padding:26px 28px 10px;">${bodyHtml}</td></tr>
-    <tr><td style="padding:18px 28px 22px;border-top:1px solid #D8D6CF;color:#575D64;font:12px/1.6 Arial,Helvetica,sans-serif;">
+    <tr><td style="border-top:1px solid #ECEAE5;font-size:0;line-height:0;">&nbsp;</td></tr>
+    <tr><td style="padding:22px 26px 6px;">${bodyHtml}</td></tr>
+    <tr><td style="padding:16px 26px 20px;border-top:1px solid #ECEAE5;color:#8a8f96;font:12px/1.6 Arial,Helvetica,sans-serif;">
       City of Spring Branch &middot; P.O. Box 1143, Spring Branch, TX 78070<br>
       <a href="${origin}/" style="color:#7A2E36;">cityofspringbranch.org</a>${footerExtra || ''}
     </td></tr>
@@ -34,8 +36,8 @@ function emailShell(origin, bodyHtml, footerExtra) {
 }
 
 function button(href, label) {
-  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:6px 0 4px;"><tr><td bgcolor="#7A2E36" style="border-radius:8px;">
-    <a href="${href}" style="display:inline-block;padding:12px 26px;font:bold 15px Arial,Helvetica,sans-serif;color:#ffffff;text-decoration:none;">${label}</a>
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:2px 0;"><tr><td bgcolor="#7A2E36" style="border-radius:8px;">
+    <a href="${href}" style="display:inline-block;padding:11px 22px;font:bold 14px Arial,Helvetica,sans-serif;color:#ffffff;text-decoration:none;">${label}</a>
   </td></tr></table>`;
 }
 
@@ -56,10 +58,10 @@ export async function onRequestPost({ request, env }) {
   const confirmUrl = `${origin}/confirm?e=${encodeURIComponent(email)}&t=${token}`;
 
   const body = `
-    <h1 style="font:700 22px/1.25 Georgia,'Times New Roman',serif;color:#22252A;margin:0 0 12px;">Confirm your subscription</h1>
-    <p style="font:16px/1.55 Georgia,'Times New Roman',serif;color:#22252A;margin:0 0 18px;">Please confirm you want to receive notices and news from the City of Spring Branch, Texas.</p>
+    <h1 style="font:700 20px/1.3 Georgia,'Times New Roman',serif;color:#22252A;margin:0 0 10px;">Confirm your subscription</h1>
+    <p style="font:15px/1.55 Georgia,'Times New Roman',serif;color:#3a3f47;margin:0 0 18px;">Please confirm you want to receive notices and news from the City of Spring Branch, Texas.</p>
     ${button(confirmUrl, 'Confirm subscription')}
-    <p style="font:13px/1.5 Arial,Helvetica,sans-serif;color:#575D64;margin:20px 0 0;">If you did not request this, you can ignore this email and nothing will happen.</p>`;
+    <p style="font:13px/1.5 Arial,Helvetica,sans-serif;color:#8a8f96;margin:18px 0 0;">If you did not request this, you can ignore this email and nothing will happen.</p>`;
   const html = emailShell(origin, body, '');
 
   const params = new URLSearchParams({ from, to: email, subject: 'Confirm your City of Spring Branch subscription', html });
