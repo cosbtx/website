@@ -7,7 +7,62 @@
     <span class="nav-spacer"></span>
     <label class="nav-search">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      <input type="search" placeholder="Search the city…" aria-label="Search the city website" id="topSearch">
+      <input type="search" placeholder="Search the city…" aria-label="Search the city website" id="topSearch" autocomplete="off">
+      <div class="search-results" id="searchResults" role="listbox" hidden></div>
     </label>
   </div>
 </nav>
+<script>
+  (function () {
+    var input = document.getElementById('topSearch');
+    var box = document.getElementById('searchResults');
+    if (!input || !box) return;
+    var idx = null, loading = false;
+    var SECT = { posts: 'Notice', meetings: 'Meeting', documents: 'Document', about: 'About', community: 'Community', '': 'Page' };
+
+    function load(cb) {
+      if (idx) { cb(); return; }
+      if (loading) return;
+      loading = true;
+      fetch('/index.json').then(function (r) { return r.json(); })
+        .then(function (d) { idx = d; loading = false; cb(); })
+        .catch(function () { loading = false; });
+    }
+    function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+    function render(q) {
+      q = q.trim().toLowerCase();
+      if (q.length < 2) { box.hidden = true; box.innerHTML = ''; return; }
+      var terms = q.split(/\s+/);
+      var hits = [];
+      for (var i = 0; i < idx.length; i++) {
+        var it = idx[i], title = (it.t || '').toLowerCase(), text = (it.x || '').toLowerCase(), score = 0, ok = true;
+        for (var j = 0; j < terms.length; j++) {
+          var t = terms[j];
+          if (title.indexOf(t) !== -1) score += 10;
+          else if (text.indexOf(t) !== -1) score += 2;
+          else { ok = false; break; }
+        }
+        if (ok) hits.push({ it: it, score: score });
+      }
+      hits.sort(function (a, b) { return b.score - a.score; });
+      hits = hits.slice(0, 8);
+      if (!hits.length) { box.innerHTML = '<div class="sr-empty">No matches</div>'; box.hidden = false; return; }
+      box.innerHTML = hits.map(function (h) {
+        return '<a href="' + h.it.u + '"><span class="sr-t">' + esc(h.it.t) + '</span><span class="sr-s">' + (SECT[h.it.s] || 'Page') + '</span></a>';
+      }).join('');
+      box.hidden = false;
+    }
+
+    input.addEventListener('input', function () { load(function () { render(input.value); }); });
+    input.addEventListener('focus', function () { load(function () { if (input.value) render(input.value); }); });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { var a = box.querySelector('a'); if (a) { e.preventDefault(); window.location = a.getAttribute('href'); } }
+      else if (e.key === 'Escape') { box.hidden = true; }
+    });
+    document.addEventListener('click', function (e) { if (!e.target.closest('.nav-search')) { box.hidden = true; } });
+
+    var qp = new URLSearchParams(location.search).get('q');
+    if (qp) { input.value = qp; load(function () { render(qp); }); }
+  })();
+</script>

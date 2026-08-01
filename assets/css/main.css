@@ -128,6 +128,7 @@
   nav.primary a.here { color: #fff; box-shadow: inset 0 -3px 0 var(--brass-soft); border-radius: 0; }
   .nav-spacer { flex: 1; }
   .nav-search {
+    position: relative;
     display: flex; align-items: center; gap: 7px; margin: 7px 0; padding: 7px 12px;
     background: rgba(255,255,255,.12); border-radius: 7px; color: #DCE7DE;
   }
@@ -135,6 +136,20 @@
     background: transparent; border: 0; color: #fff; font-family: var(--sans); font-size: 14px; width: 150px; outline: none;
   }
   .nav-search input::placeholder { color: #B9CcBD; }
+  .search-results {
+    position: absolute; top: calc(100% + 6px); right: 0; z-index: 50;
+    width: 340px; max-width: 80vw; max-height: 60vh; overflow-y: auto;
+    background: var(--paper-2); border: 1px solid var(--line); border-radius: 10px;
+    box-shadow: var(--shadow-lift); padding: 6px;
+  }
+  .nav-search .search-results a {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+    padding: 9px 11px; border-radius: 7px; text-decoration: none; color: var(--ink);
+  }
+  .nav-search .search-results a:hover { background: var(--brick-bg); color: var(--ink); }
+  .search-results .sr-t { font-weight: 600; font-size: 14px; }
+  .search-results .sr-s { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); white-space: nowrap; }
+  .search-results .sr-empty { padding: 12px; color: var(--ink-soft); font-size: 14px; }
 
   /* ---------- Sections ---------- */
   section { padding: 46px 0; }

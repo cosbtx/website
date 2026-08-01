@@ -1,0 +1,7 @@
+{{- $list := slice -}}
+{{- range where .Site.RegularPages "Params.searchable" "!=" false -}}
+  {{- $url := .RelPermalink -}}
+  {{- if and (eq .Section "documents") .Params.file -}}{{- $url = .Params.file -}}{{- end -}}
+  {{- $list = $list | append (dict "t" .Title "u" $url "s" .Section "x" (.Plain | truncate 600 "")) -}}
+{{- end -}}
+{{- $list | jsonify -}}
