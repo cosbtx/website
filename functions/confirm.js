@@ -19,7 +19,8 @@ export async function onRequestGet({ request, env }) {
   const list = env.MAILGUN_LIST;
   const auth = 'Basic ' + btoa('api:' + env.MAILGUN_API_KEY);
   // Store an unsubscribe token as a member var so list emails can carry a signed unsubscribe link.
-  const body = new URLSearchParams({ address: email, subscribed: 'yes', upsert: 'yes', vars: JSON.stringify({ h: t }) });
+  // Store the email and unsubscribe token as member vars so list emails can build a signed unsubscribe link.
+  const body = new URLSearchParams({ address: email, subscribed: 'yes', upsert: 'yes', vars: JSON.stringify({ h: t, e: email }) });
   const r = await fetch(`${base}/v3/lists/${encodeURIComponent(list)}/members`, { method: 'POST', headers: { Authorization: auth }, body });
   if (!r.ok) return back('/subscription-management/?error=add', request);
   return back('/subscription-confirmed/', request);

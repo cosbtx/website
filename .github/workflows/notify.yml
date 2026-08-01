@@ -1,0 +1,22 @@
+name: Email notices on publish
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Email newly added notices to the list
+        env:
+          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          MAILGUN_DOMAIN: ${{ vars.MAILGUN_DOMAIN }}
+          MAILGUN_LIST: ${{ vars.MAILGUN_LIST }}
+          MAILGUN_FROM: ${{ vars.MAILGUN_FROM }}
+          SITE: https://demo.cityofspringbranch.org
+          GITHUB_EVENT_BEFORE: ${{ github.event.before }}
+        run: python3 .github/scripts/send_notices.py
