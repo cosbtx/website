@@ -9,12 +9,41 @@ async function hmac(msg, secret) {
 }
 function back(path, request) { return Response.redirect(new URL(path, request.url).toString(), 303); }
 
+// Branded, email-client-safe shell (table layout, inline styles). Reused for notice emails.
+function emailShell(origin, bodyHtml, footerExtra) {
+  return `<!doctype html><html><body style="margin:0;padding:0;background:#ECEAE5;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ECEAE5;"><tr><td align="center" style="padding:28px 12px;">
+  <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border:1px solid #D8D6CF;border-radius:12px;">
+    <tr><td style="background:#2A2E34;border-radius:12px 12px 0 0;padding:18px 26px;">
+      <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+        <td width="46" valign="middle"><img src="${origin}/img/city-seal.png" width="42" height="42" alt="" style="display:block;border-radius:8px;background:#ffffff;"></td>
+        <td valign="middle" style="padding-left:12px;">
+          <div style="font:600 10px/1 Arial,Helvetica,sans-serif;letter-spacing:.14em;color:#B26B72;text-transform:uppercase;">Official Municipal Website</div>
+          <div style="font:700 18px/1.2 Georgia,'Times New Roman',serif;color:#ffffff;padding-top:3px;">City of Spring Branch, Texas</div>
+        </td>
+      </tr></table>
+    </td></tr>
+    <tr><td style="padding:26px 28px 10px;">${bodyHtml}</td></tr>
+    <tr><td style="padding:18px 28px 22px;border-top:1px solid #D8D6CF;color:#575D64;font:12px/1.6 Arial,Helvetica,sans-serif;">
+      City of Spring Branch &middot; P.O. Box 1143, Spring Branch, TX 78070<br>
+      <a href="${origin}/" style="color:#7A2E36;">cityofspringbranch.org</a>${footerExtra || ''}
+    </td></tr>
+  </table>
+</td></tr></table>
+</body></html>`;
+}
+
+function button(href, label) {
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:6px 0 4px;"><tr><td bgcolor="#7A2E36" style="border-radius:8px;">
+    <a href="${href}" style="display:inline-block;padding:12px 26px;font:bold 15px Arial,Helvetica,sans-serif;color:#ffffff;text-decoration:none;">${label}</a>
+  </td></tr></table>`;
+}
+
 export async function onRequestPost({ request, env }) {
-  let email = '', name = '';
+  let email = '';
   try {
     const f = await request.formData();
     email = String(f.get('email') || '').trim().toLowerCase();
-    name = String(f.get('name') || '').trim();
   } catch (e) { return back('/signup/?error=bad', request); }
 
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return back('/signup/?error=email', request);
@@ -22,20 +51,20 @@ export async function onRequestPost({ request, env }) {
   const base = env.MAILGUN_BASE || 'https://api.mailgun.net';
   const domain = env.MAILGUN_DOMAIN;
   const from = env.MAILGUN_FROM || `City of Spring Branch <announcements@${domain}>`;
+  const origin = new URL(request.url).origin;
   const token = await hmac(email, env.SUBSCRIBE_SECRET);
-  const confirmUrl = `${new URL(request.url).origin}/confirm?e=${encodeURIComponent(email)}&t=${token}`;
+  const confirmUrl = `${origin}/confirm?e=${encodeURIComponent(email)}&t=${token}`;
 
-  const html = `<div style="font-family:Georgia,serif;color:#22252A;max-width:520px;margin:0 auto;padding:24px">
-    <p style="font:600 12px ui-monospace,monospace;letter-spacing:.08em;color:#7A2E36;text-transform:uppercase;margin:0 0 6px">City of Spring Branch, Texas</p>
-    <h1 style="font-size:22px;margin:0 0 14px">Confirm your subscription</h1>
-    <p${name ? '' : ''}>Please confirm you want to receive notices and news from the City of Spring Branch.</p>
-    <p style="margin:22px 0"><a href="${confirmUrl}" style="background:#7A2E36;color:#fff;text-decoration:none;padding:11px 20px;border-radius:8px;font-weight:600">Confirm subscription</a></p>
-    <p style="color:#575D64;font-size:13px">If you did not request this, you can ignore this email and nothing will happen.</p>
-  </div>`;
+  const body = `
+    <h1 style="font:700 22px/1.25 Georgia,'Times New Roman',serif;color:#22252A;margin:0 0 12px;">Confirm your subscription</h1>
+    <p style="font:16px/1.55 Georgia,'Times New Roman',serif;color:#22252A;margin:0 0 18px;">Please confirm you want to receive notices and news from the City of Spring Branch, Texas.</p>
+    ${button(confirmUrl, 'Confirm subscription')}
+    <p style="font:13px/1.5 Arial,Helvetica,sans-serif;color:#575D64;margin:20px 0 0;">If you did not request this, you can ignore this email and nothing will happen.</p>`;
+  const html = emailShell(origin, body, '');
 
-  const body = new URLSearchParams({ from, to: email, subject: 'Confirm your City of Spring Branch subscription', html });
+  const params = new URLSearchParams({ from, to: email, subject: 'Confirm your City of Spring Branch subscription', html });
   const auth = 'Basic ' + btoa('api:' + env.MAILGUN_API_KEY);
-  const r = await fetch(`${base}/v3/${domain}/messages`, { method: 'POST', headers: { Authorization: auth }, body });
+  const r = await fetch(`${base}/v3/${domain}/messages`, { method: 'POST', headers: { Authorization: auth }, body: params });
   if (!r.ok) return back('/signup/?error=send', request);
   return back('/signup/?pending=1', request);
 }
