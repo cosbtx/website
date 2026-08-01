@@ -415,6 +415,8 @@
 .providers a:hover { border-color: var(--brass-soft); box-shadow: var(--shadow); }
 .providers span { white-space: nowrap; }
 .providers img { height: 40px; width: 76px; box-sizing: border-box; object-fit: contain; background: #fff; border-radius: 4px; padding: 4px; flex: none; }
+.providers.biz a { height: auto; min-height: 56px; }
+.providers.biz span { white-space: normal; }
 
 /* ---------- Contact info columns ---------- */
 .info-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px 32px; margin: 12px 0 30px; }
