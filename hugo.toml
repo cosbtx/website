@@ -35,21 +35,25 @@ defaultContentLanguage = "en"
     url = "/documents/"
     weight = 3
   [[menu.main]]
+    name = "Permits"
+    url = "/permits/"
+    weight = 4
+  [[menu.main]]
     name = "Community"
     url = "/community/"
-    weight = 4
+    weight = 5
   [[menu.main]]
     name = "Notices & News"
     url = "/posts/"
-    weight = 5
+    weight = 6
   [[menu.main]]
     name = "Elections"
     url = "/elections/"
-    weight = 6
+    weight = 7
   [[menu.main]]
     name = "Contact"
     url = "/contact/"
-    weight = 7
+    weight = 8
 
 [markup.goldmark.renderer]
   unsafe = true
