@@ -96,26 +96,41 @@ def build(path):
         if d.get('time'): parts.append(d['time'])
         if d.get('location'): parts.append(d['location'])
         meta = ' &middot; '.join(H.escape(p) for p in parts if p)
+        plain = ' · '.join(p for p in parts if p)
         subject = f'{title}, {dt}'
         inner = (f'<h1 style="font:700 20px/1.3 Georgia,\'Times New Roman\',serif;color:#22252A;margin:0 0 8px;">{H.escape(title)}</h1>'
                  f'<p style="font:15px/1.55 Georgia,\'Times New Roman\',serif;color:#3a3f47;margin:0 0 16px;">{meta}</p>{button(url, "View the full notice")}')
-        return subject, shell('Public Meeting Notice', inner)
+        text = (f'City of Spring Branch, Texas\n\nPublic Meeting Notice\n{title}\n{plain}\n\n'
+                f'View the full notice: {url}\n\n'
+                f'You are receiving this because you subscribed to City of Spring Branch notices.\n'
+                f'Unsubscribe: {SITE}/subscription-management/?e=%recipient.e%&t=%recipient.h%\n')
+        return subject, shell('Public Meeting Notice', inner), text
     else:
         slug = d.get('slug') or re.sub(r'^\d{4}-\d{2}-\d{2}-', '', os.path.basename(path)[:-3])
         url = f'{SITE}/posts/{slug}/'
-        text = H.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body))).strip()
-        lead = (text[:220].rstrip() + '…') if len(text) > 220 else text
+        cat = CAT.get(d.get('category', 'notice'), 'Notice')
+        stripped = H.unescape(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body))).strip()
+        lead = (stripped[:220].rstrip() + '…') if len(stripped) > 220 else stripped
         inner = (f'<h1 style="font:700 20px/1.3 Georgia,\'Times New Roman\',serif;color:#22252A;margin:0 0 10px;">{H.escape(title)}</h1>'
                  f'<p style="font:15px/1.55 Georgia,\'Times New Roman\',serif;color:#3a3f47;margin:0 0 16px;">{H.escape(lead)}</p>{button(url, "Read the full notice")}')
-        return title, shell(CAT.get(d.get('category', 'notice'), 'Notice'), inner)
+        text = (f'City of Spring Branch, Texas\n\n{cat}\n{title}\n\n{lead}\n\n'
+                f'Read the full notice: {url}\n\n'
+                f'You are receiving this because you subscribed to City of Spring Branch notices.\n'
+                f'Unsubscribe: {SITE}/subscription-management/?e=%recipient.e%&t=%recipient.h%\n')
+        return title, shell(cat, inner), text
 
 sent = 0
 for path in added:
     if not os.path.exists(path): continue
     r = build(path)
     if not r: continue
-    subject, html = r
-    data = urllib.parse.urlencode({'from': FROM, 'to': LIST, 'subject': subject, 'html': html}).encode()
+    subject, html, text = r
+    unsub = f'<{SITE}/unsubscribe?e=%recipient.e%&t=%recipient.h%>'
+    data = urllib.parse.urlencode({
+        'from': FROM, 'to': LIST, 'subject': subject, 'html': html, 'text': text,
+        'h:List-Unsubscribe': unsub,
+        'h:List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+    }).encode()
     req = urllib.request.Request(f'{BASE}/v3/{DOMAIN}/messages', data=data)
     req.add_header('Authorization', 'Basic ' + base64.b64encode(f'api:{API_KEY}'.encode()).decode())
     try:

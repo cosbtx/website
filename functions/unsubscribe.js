@@ -10,20 +10,26 @@ async function hmac(msg, secret) {
 function back(path, request) { return Response.redirect(new URL(path, request.url).toString(), 303); }
 
 async function handle(request, env) {
-  let email = '', t = '';
-  if (request.method === 'POST') {
-    try { const f = await request.formData(); email = String(f.get('e') || '').toLowerCase(); t = String(f.get('t') || ''); } catch (e) {}
-  } else {
-    const u = new URL(request.url); email = String(u.searchParams.get('e') || '').toLowerCase(); t = String(u.searchParams.get('t') || '');
+  // Read from the query string (works for GET and Gmail's one-click List-Unsubscribe POST,
+  // which carries e/t in the URL), falling back to the on-page form's POST body.
+  const u = new URL(request.url);
+  let email = String(u.searchParams.get('e') || '').toLowerCase();
+  let t = String(u.searchParams.get('t') || '');
+  const oneClick = request.method === 'POST' && !!email && !!t;
+  if ((!email || !t) && request.method === 'POST') {
+    try { const f = await request.formData(); email = email || String(f.get('e') || '').toLowerCase(); t = t || String(f.get('t') || ''); } catch (e) {}
   }
   const expected = await hmac(email, env.SUBSCRIBE_SECRET);
-  if (!email || t !== expected) return back('/subscription-management/?error=token', request);
+  if (!email || t !== expected) {
+    return oneClick ? new Response('Invalid', { status: 400 }) : back('/subscription-management/?error=token', request);
+  }
 
   const base = env.MAILGUN_BASE || 'https://api.mailgun.net';
   const list = env.MAILGUN_LIST;
   const auth = 'Basic ' + btoa('api:' + env.MAILGUN_API_KEY);
   await fetch(`${base}/v3/lists/${encodeURIComponent(list)}/members/${encodeURIComponent(email)}`, { method: 'DELETE', headers: { Authorization: auth } });
-  return back('/subscription-management/?done=1', request);
+  // Gmail's one-click POST expects a 200, not a redirect to an HTML page.
+  return oneClick ? new Response('Unsubscribed', { status: 200 }) : back('/subscription-management/?done=1', request);
 }
 
 export const onRequestGet = ({ request, env }) => handle(request, env);
