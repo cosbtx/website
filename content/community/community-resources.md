@@ -1,18 +1,30 @@
 ---
 title: "Community Resources"
 aliases: ["/community-resources/"]
+wide: true
 ---
-<p>Below are some links to resources available to people in our community:</p>
-<ul>
-<li><a href="https://www.remember4veterans.com">Warriors Remembrance Foundation </a></li>
-<li><a href="https://www.snappywords.com/knowledge/staying-safe-online-a-seniors-guide-to-internet-security">A Senior&#8217;s Guide to Internet Security</a></li>
-<li><a href="https://www.caring.com/senior-living/assisted-living/texas">Caring.com</a> is a free resource that provides comprehensive information on topics like financial support, organizations, and available care options that are in every city in Texas that can help senior citizens stay connected with their community.</li>
-<li><a href="https://www.seniorguidance.org/">Senior Guidance</a> is an organization dedicated to providing senior living assistance to the elderly.</li>
-<li><a href="http://retireguide.com/medicare/">What is Medicare</a> and <a href="http://retireguide.com/medicare/coverage/caregivers/">Medicare Guide for Caregivers</a> from <a href="https://www.retireguide.com">RetireGuide</a></li>
-<li><a href="http://alcoholrehabhelp.org/">Alcohol Rehab Help</a></li>
-<li><a href="https://www.memorycare.com/">MemoryCare.com</a> <span>empowers seniors and their caregivers by offering access to high-quality memory care tools and resources.</span></li>
-<li><a href="https://rehabnet.com/texas/">RehabNet</a> &#8211; Raising awareness about accredited substance abuse rehab.</li>
-<li><a href="https://beeswarmed.org/">Beeswarmed.org</a> &#8211; Locate local beekeepers to relocate honey bee swarms at no cost to property owners. </li>
-</ul>
-<p>Does your organization provide resources to residents of Spring Branch? Send us a link to info@cityofspringbranch.org and we&#8217;ll post it here.</p>
-<p class="wp-block-paragraph"></p>
+Public and community services relevant to Spring Branch and the surrounding Comal County area. Looking for [utilities](/community/utilities/) or [local businesses](/community/local-businesses/)? Those have their own pages.
+
+## County Government
+<div class="info-cols">
+<div><h3><a href="https://www.comalcounty.gov/" target="_blank" rel="noopener">Comal County</a></h3><p class="muted">County government for unincorporated Comal County: property and tax records, courts, roads, and county permits.</p></div>
+<div><h3><a href="https://www.comalcounty.gov/163/County-Offices" target="_blank" rel="noopener">County Offices &amp; Departments</a></h3><p class="muted">Directory of county offices, including the Sheriff, Tax Assessor-Collector, and County Engineer.</p></div>
+</div>
+
+## Emergency &amp; Safety
+<div class="info-cols">
+<div><h3><a href="https://www.comalcounty.gov/353/Emergency-Notification-System" target="_blank" rel="noopener">Emergency Alerts (sign up)</a></h3><p class="muted">Register your phone and email to receive county emergency notifications for floods, fires, and other hazards.</p></div>
+<div><h3><a href="https://www.comalcounty.gov/192/Emergency-Management" target="_blank" rel="noopener">Emergency Management</a></h3><p class="muted">County office of emergency management: preparedness, hazards, and response.</p></div>
+<div><h3><a href="https://www.comalcounty.gov/AlertCenter.aspx" target="_blank" rel="noopener">Alert Center</a></h3><p class="muted">Current county alerts and public notices.</p></div>
+<div><h3><a href="https://www.comalcounty.gov/289/Outdoor-Burn-Information" target="_blank" rel="noopener">Outdoor Burning &amp; Burn Ban Status</a></h3><p class="muted">Whether a burn ban is currently in effect, and the rules for outdoor burning.</p></div>
+</div>
+
+## Schools
+<div class="info-cols">
+<div><h3><a href="https://www.comalisd.org/" target="_blank" rel="noopener">Comal ISD</a></h3><p class="muted">The public school district serving Spring Branch, including Smithson Valley High, Spring Branch Middle, and area elementary schools.</p></div>
+</div>
+
+## How we choose what to list
+This list helps City of Spring Branch residents find public and community services relevant to our area. It is not advertising space, and a listing is not an endorsement. A resource is eligible only if it is operated by a government agency, a public school, a nonprofit, or a volunteer or community group serving this area; offers a service, program, or public information available to residents; serves or is available within Comal County or the immediately surrounding area; and links to the operator's own official page. We do not list for-profit businesses (see [Local Businesses](/community/local-businesses/)), referral or lead-generation sites, political campaigns, or fundraising solicitations.
+
+To suggest a resource, email [info@cityofspringbranch.org](mailto:info@cityofspringbranch.org) with the name, official website, and one sentence describing the service.

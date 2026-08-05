@@ -1,6 +1,7 @@
 ---
 title: "Local Businesses"
 aliases: ["/local-businesses/"]
+wide: true
 ---
 The logos and links on this page are provided solely as a courtesy to local businesses and our residents. They should not be considered an endorsement by the city.
 
