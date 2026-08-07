@@ -1,7 +1,6 @@
 ---
 title: "Community Resources"
 aliases: ["/community-resources/"]
-wide: true
 ---
 Public and community services relevant to Spring Branch and the surrounding Comal County area. Looking for [utilities](/community/utilities/) or [local businesses](/community/local-businesses/)? Those have their own pages.
 
