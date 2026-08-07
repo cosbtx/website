@@ -9,8 +9,8 @@ Public records requests are answered under the Texas Public Information Act. To 
 
 ## Attention builders, contractors, and developers
 
-If you are inquiring about permits and regulations, please refer to the [City Map](/about/maps/) first to verify that your project is within the Spring Branch city limits. Most 78070 addresses reference Spring Branch but fall outside the city limits.
+{{< jurisdiction >}}
 
-[Subdivision Regulations (PDF)](/uploads/wp/2018/05/Subdivision-Regulations.pdf)
+If your project is inside the city limits, review the [Subdivision Regulations (PDF)](/uploads/wp/2018/05/Subdivision-Regulations.pdf). If it is not, permits and regulations are handled by [Comal County](https://www.comalcounty.gov/) or the [City of Bulverde](https://www.bulverdetx.gov/), depending on where your property sits.
 
 Please email [info@cityofspringbranch.org](mailto:info@cityofspringbranch.org) with additional questions.

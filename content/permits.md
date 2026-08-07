@@ -1,13 +1,11 @@
 ---
 title: "Permits"
 ---
-The City of Spring Branch issues one kind of permit: a **sign permit**. This page explains who needs one, how to apply, and what to expect.
+The City of Spring Branch issues one kind of permit: a **sign permit**, and only for property inside the city limits. This page explains who needs one, how to apply, and what to expect.
 
-## First, are you inside the city limits?
+{{< jurisdiction >}}
 
-Spring Branch shares the 78070 ZIP code with a large surrounding area that is **not** part of the city. Many addresses look like Spring Branch but fall outside the city limits, and if your property is outside the limits, a city sign permit does not apply to you.
-
-Before anything else, check your location against the [city limits map](/about/maps/), which has a boundary map, an interactive map, and the legal metes-and-bounds description. If you are still unsure, [email the city](mailto:info@cityofspringbranch.org) with your address and we will help you confirm.
+**Not inside the city?** The city does not issue building or development permits. If your property is in unincorporated Comal County, those are handled by [Comal County](https://www.comalcounty.gov/). If it is inside the City of Bulverde or its ETJ, contact the [City of Bulverde](https://www.bulverdetx.gov/).
 
 ## What needs a permit
 
