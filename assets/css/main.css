@@ -116,6 +116,8 @@
   .titles h1 { font-size: clamp(26px, 4.4vw, 40px); color: var(--live-oak); letter-spacing: .01em; }
   .titles .tagline { color: var(--ink-soft); font-size: 14.5px; margin-top: 3px; }
   .brass-rule { height: 0; border: 0; border-top: 3px double var(--brass); opacity: .8; margin: 0; }
+  .masthead-photo { flex: none; }
+  .masthead-photo img { display: block; height: 82px; width: auto; border-radius: 10px; border: 1px solid var(--brass); box-shadow: var(--shadow); }
 
   /* ---------- Nav ---------- */
   nav.primary { position: sticky; top: 0; z-index: 40; background: var(--brand); color: #fff; box-shadow: var(--shadow); }
@@ -320,6 +322,7 @@
   .alert-dismiss { flex: none; background: transparent; border: 0; color: #fff; cursor: pointer; width: 32px; height: 32px; border-radius: 6px; display: grid; place-items: center; opacity: .85; }
   .alert-dismiss:hover { background: rgba(255,255,255,.18); opacity: 1; }
   @media (max-width: 680px) {
+    .masthead-photo { display: none; }
     .alert-inner { flex-wrap: wrap; gap: 8px 14px; padding: 12px 18px; }
     .alert-icon { width: 22px; height: 22px; }
     .alert-body { flex-basis: 100%; order: 2; }
