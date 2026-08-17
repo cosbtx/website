@@ -1,7 +1,7 @@
 ---
 title: "Contact Us"
 ---
-<div class="info-cols"><div><h3>Mailing Address</h3><p>City of Spring Branch<br>PO Box 1143<br>Spring Branch, Texas 78070</p></div><div><h3>Email</h3><p><a href="mailto:info@cityofspringbranch.org">info@cityofspringbranch.org</a></p></div><div><h3>Phone</h3><p><a href="tel:8307304175">830.730.4175</a></p><p class="muted">This phone is not attended. Messages are retrieved weekly, so please email for a faster response.</p></div></div>
+<div class="info-cols"><div><h3>Mailing Address</h3><p>City of Spring Branch<br>PO Box 1143<br>Spring Branch, Texas 78070</p></div><div><h3>Email</h3><p><a href="mailto:info@cityofspringbranch.org">info@cityofspringbranch.org</a></p></div><div><h3>Phone</h3><p><a href="tel:8307304175">830.730.4175</a></p><p class="muted">This phone is not attended regularly. We do our best to respond daily, but an email to <a href="mailto:info@cityofspringbranch.org">info@cityofspringbranch.org</a> might get a quicker reply.</p></div></div>
 
 ## Public records
 
