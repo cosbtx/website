@@ -62,7 +62,10 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     format: "frontmatter"
-    sortable_fields: [date, title]
+    summary: "{{date | date('MMM D, YYYY')}} · {{meeting_type}}"
+    sortable_fields:
+      fields: [date, title]
+      default: { field: date, direction: Descending }
     fields:
       - { name: title, label: "Title", widget: string, default: "Notice of Regular Commission Meeting" }
       - { name: date, label: "Meeting date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
