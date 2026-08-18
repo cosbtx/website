@@ -32,7 +32,7 @@ collections:
     folder: "content/documents"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    format: "toml-frontmatter"
+    format: "frontmatter"
     sortable_fields: [date, title]
     fields:
       - { name: title, label: "Title", widget: string }
@@ -61,7 +61,7 @@ collections:
     folder: "content/meetings"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    format: "toml-frontmatter"
+    format: "frontmatter"
     sortable_fields: [date, title]
     fields:
       - { name: title, label: "Title", widget: string, default: "Notice of Regular Commission Meeting" }
@@ -95,7 +95,7 @@ collections:
     folder: "content/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    format: "toml-frontmatter"
+    format: "frontmatter"
     fields:
       - { name: title, label: "Title", widget: string }
       - { name: date, label: "Date", widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
@@ -119,7 +119,7 @@ collections:
       - name: about
         label: "About the City"
         file: "content/about.md"
-        format: "toml-frontmatter"
+        format: "frontmatter"
         fields:
           - { name: title, label: "Title", widget: string }
           - { name: date, label: "Date", widget: datetime, required: false }
@@ -127,7 +127,7 @@ collections:
       - name: contact
         label: "Contact"
         file: "content/contact.md"
-        format: "toml-frontmatter"
+        format: "frontmatter"
         fields:
           - { name: title, label: "Title", widget: string }
           - { name: date, label: "Date", widget: datetime, required: false }
@@ -135,7 +135,7 @@ collections:
       - name: elections
         label: "Elections"
         file: "content/elections.md"
-        format: "toml-frontmatter"
+        format: "frontmatter"
         fields:
           - { name: title, label: "Title", widget: string }
           - { name: date, label: "Date", widget: datetime, required: false }
@@ -143,7 +143,7 @@ collections:
       - name: local_businesses
         label: "Local Businesses"
         file: "content/community/local-businesses.md"
-        format: "toml-frontmatter"
+        format: "frontmatter"
         fields:
           - { name: title, label: "Title", widget: string }
           - { name: date, label: "Date", widget: datetime, required: false }
