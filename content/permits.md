@@ -1,7 +1,7 @@
 ---
 title: "Permits"
 ---
-The City of Spring Branch issues one kind of permit: a **sign permit**, and only for property inside the city limits. This page explains who needs one, how to apply, and what to expect.
+The City of Spring Branch issues two kinds of permit, for **signs** and for **outdoor lighting**, both only for property inside the city limits. This page explains who needs one, how to apply, and what to expect.
 
 {{< jurisdiction >}}
 
@@ -9,7 +9,7 @@ The City of Spring Branch issues one kind of permit: a **sign permit**, and only
 
 ## What's regulated
 
-The city regulates two things you may be planning. Only signs require a permit.
+The city regulates two things you may be planning, and each requires a permit from the City Commission.
 
 ### Signs (permit required)
 
@@ -17,19 +17,19 @@ Signs within the city are regulated by the city's Sign Ordinance. Review it to s
 
 [Sign Ordinance 2026-1 (PDF)](/uploads/documents/Ordinances/2026-01-Sign-Ordinance-SBSeal.pdf)
 
-### Outdoor lighting (no permit)
+### Outdoor lighting (permit required)
 
-Outdoor lighting is governed by the Outdoor Lighting Ordinance. No city permit is required, but new and replacement installations must comply with it:
+Installing new outdoor lighting, or replacing existing outdoor lighting, requires a lighting permit from the City Commission. This applies to outdoor lighting generally, not just signs, including building lights and parking-lot fixtures. Some lighting is exempt, such as holiday lighting and low-output string lights. The Outdoor Lighting Ordinance has the standards, exemptions, and permit details:
 
 [Outdoor Lighting Ordinance 2021-2 (PDF)](/uploads/documents/Ordinances/2021-2-Outdoor-Lighting-Ordinance.pdf)
 
 ## How to apply
 
 1. Confirm your property is inside the city limits (above).
-2. Complete the city's sign permit application form. If you do not have it, email us and we will send it to you.
-3. Email the completed form to [info@cityofspringbranch.org](mailto:info@cityofspringbranch.org).
+2. Email the city at [info@cityofspringbranch.org](mailto:info@cityofspringbranch.org) and we will send you the correct application, for a sign or for outdoor lighting, plus a list of what to include.
+3. Email your completed application back to the same address.
 
-There is **no permit fee** at this time.
+Sign permits currently have no fee. A lighting permit may carry an application fee set by the City Commission.
 
 ## What happens next
 
