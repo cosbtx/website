@@ -29,7 +29,7 @@ Installing new outdoor lighting, or replacing existing outdoor lighting, require
 2. Email the city at [info@cityofspringbranch.org](mailto:info@cityofspringbranch.org) and we will send you the correct application, for a sign or for outdoor lighting, plus a list of what to include.
 3. Email your completed application back to the same address.
 
-Sign permits currently have no fee. A lighting permit may carry an application fee set by the City Commission.
+Each application has a $100 fee.
 
 ## What happens next
 
