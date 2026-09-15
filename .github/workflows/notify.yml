@@ -17,6 +17,6 @@ jobs:
           MAILGUN_DOMAIN: ${{ vars.MAILGUN_DOMAIN }}
           MAILGUN_LIST: ${{ vars.MAILGUN_LIST }}
           MAILGUN_FROM: ${{ vars.MAILGUN_FROM }}
-          SITE: https://cityofspringbranch.org
+          SITE: https://cityofspringbranch.gov
           GITHUB_EVENT_BEFORE: ${{ github.event.before }}
         run: python3 .github/scripts/send_notices.py

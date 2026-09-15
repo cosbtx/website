@@ -9,7 +9,7 @@ API_KEY = os.environ.get('MAILGUN_API_KEY')
 DOMAIN  = os.environ.get('MAILGUN_DOMAIN') or 'announcements.cityofspringbranch.org'
 LIST    = os.environ.get('MAILGUN_LIST') or 'test@announcements.cityofspringbranch.org'
 FROM    = os.environ.get('MAILGUN_FROM') or f'City of Spring Branch <announcements@{DOMAIN}>'
-SITE    = (os.environ.get('SITE') or 'https://cityofspringbranch.org').rstrip('/')
+SITE    = (os.environ.get('SITE') or 'https://cityofspringbranch.gov').rstrip('/')
 BASE    = os.environ.get('MAILGUN_BASE') or 'https://api.mailgun.net'
 
 if not API_KEY:

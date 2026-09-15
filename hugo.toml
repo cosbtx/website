@@ -1,4 +1,4 @@
-baseURL = "https://cityofspringbranch.org/"
+baseURL = "https://cityofspringbranch.gov/"
 title = "City of Spring Branch, Texas"
 enableRobotsTXT = true
 enableGitInfo = false
