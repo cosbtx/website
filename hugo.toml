@@ -24,6 +24,9 @@ defaultContentLanguage = "en"
   cityStateZip = "Spring Branch, TX 78070"
   meetingPlace = "Fire Station #6"
   meetingAddress = "9850 FM 311"
+  # Cloudflare Turnstile site key for the signup form. Empty = Turnstile widget off
+  # (honeypot still active). Set this and the TURNSTILE_SECRET env var to enforce it.
+  turnstileSiteKey = ""
 
 [menu]
   [[menu.main]]

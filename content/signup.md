@@ -8,6 +8,8 @@ Get city notices and news delivered to your inbox: meeting notices, elections, t
 <form method="POST" action="/subscribe" class="subscribe-form">
   <input type="text" name="name" placeholder="Name (optional)" autocomplete="name">
   <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+  <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" placeholder="Leave this blank">
+  {{< turnstile >}}
   <button type="submit" class="btn btn-brass">Subscribe</button>
 </form>
 
