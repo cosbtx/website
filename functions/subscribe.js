@@ -42,12 +42,11 @@ function button(href, label) {
 }
 
 export async function onRequestPost({ request, env }) {
-  let email = '', hp = '', turnstileToken = '';
+  let email = '', hp = '';
   try {
     const f = await request.formData();
     email = String(f.get('email') || '').trim().toLowerCase();
     hp = String(f.get('website') || '').trim();
-    turnstileToken = String(f.get('cf-turnstile-response') || '');
   } catch (e) { return back('/signup/?error=bad', request); }
 
   // Honeypot: the hidden "website" field is invisible to people; only bots fill it.
@@ -55,19 +54,6 @@ export async function onRequestPost({ request, env }) {
   if (hp) return back('/signup/?pending=1', request);
 
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return back('/signup/?error=email', request);
-
-  // Cloudflare Turnstile: verify the challenge token once TURNSTILE_SECRET is set.
-  // Skipped until then, so the form keeps working while you configure the keys.
-  if (env.TURNSTILE_SECRET) {
-    const ip = request.headers.get('CF-Connecting-IP') || '';
-    const verify = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST',
-      headers: { 'content-type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ secret: env.TURNSTILE_SECRET, response: turnstileToken, remoteip: ip }),
-    });
-    const outcome = await verify.json().catch(() => ({ success: false }));
-    if (!outcome.success) return back('/signup/?error=verify', request);
-  }
 
   const base = env.MAILGUN_BASE || 'https://api.mailgun.net';
   const domain = env.MAILGUN_DOMAIN;

@@ -462,7 +462,6 @@
 .subscribe-form { display: flex; flex-wrap: wrap; align-items: start; gap: 10px; margin: 16px 0 8px; max-width: 480px; }
 .subscribe-form input { flex: 1 1 180px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper-2); color: var(--ink); font-family: var(--sans); font-size: 15px; }
 .subscribe-form input:focus { outline: 2px solid var(--brass-soft); outline-offset: 1px; }
-.subscribe-form .cf-turnstile { flex: 1 1 100%; }
 .subscribe-form .btn { flex: 0 0 auto; }
 .form-note { max-width: 520px; margin: 14px 0; padding: 12px 14px; border-radius: 8px; background: var(--brick-bg); border: 1px solid var(--brass-soft); color: var(--ink); font-size: 14.5px; }
 .form-note.is-error { background: var(--advisory-bg); border-color: var(--advisory); }
