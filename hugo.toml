@@ -26,7 +26,7 @@ defaultContentLanguage = "en"
   meetingAddress = "9850 FM 311"
   # Cloudflare Turnstile site key for the signup form. Empty = Turnstile widget off
   # (honeypot still active). Set this and the TURNSTILE_SECRET env var to enforce it.
-  turnstileSiteKey = ""
+  turnstileSiteKey = "0x4AAAAAAFO9K7jurIDQjxK-"
 
 [menu]
   [[menu.main]]
