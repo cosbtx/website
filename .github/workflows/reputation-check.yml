@@ -1,12 +1,13 @@
 name: Email reputation check
 
+# Daily check of Mailgun bounce and complaint rates. Stays silent when healthy;
+# emails ALERT_EMAIL (and fails the run) when provider-facing bounce tops 2% or
+# complaints top 0.1%. Reuses the MAILGUN_API_KEY secret. Also runnable manually.
+
 on:
   schedule:
-    - cron: '0 13 * * *'   # daily ~13:00 UTC (~7 AM Central)
-  workflow_dispatch: {}      # allow manual runs from the Actions tab
-
-permissions:
-  contents: read
+    - cron: "0 13 * * *"   # 13:00 UTC daily (~7:00 AM Central)
+  workflow_dispatch: {}
 
 jobs:
   check:
