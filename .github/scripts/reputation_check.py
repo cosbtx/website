@@ -50,23 +50,21 @@ def window(duration):
         'event': ['accepted', 'delivered', 'failed', 'complained'],
         'duration': duration,
     })
-    acc = delv = permf = suppress = compl = 0
+    acc = delv = new_bounce = sup_bounce = compl = 0
     for b in data.get('stats', []):
         acc  += leaf_total(b.get('accepted'))
         delv += leaf_total(b.get('delivered'))
         perm  = (b.get('failed') or {}).get('permanent') or {}
-        permf += leaf_total(perm)
-        for k in ('suppress-bounce', 'suppress-complaint', 'suppress-unsubscribe'):
-            suppress += leaf_total(perm.get(k))
+        new_bounce += leaf_total(perm.get('bounce'))           # true hard bounce: reached a mailbox, rejected
+        sup_bounce += leaf_total(perm.get('suppress-bounce'))  # Mailgun blocked a previously-bounced address
         compl += leaf_total(b.get('complained'))
-    real_bounce = max(permf - suppress, 0)
-    denom_incl = delv + permf
-    denom_prov = delv + real_bounce
+    denom_prov = delv + new_bounce
+    denom_incl = delv + new_bounce + sup_bounce
     return dict(
-        duration=duration, accepted=acc, delivered=delv, permfail=permf,
-        suppress=suppress, real_bounce=real_bounce, complaints=compl,
-        bounce_incl=(permf / denom_incl if denom_incl else 0.0),
-        bounce_prov=(real_bounce / denom_prov if denom_prov else 0.0),
+        duration=duration, accepted=acc, delivered=delv,
+        new_bounce=new_bounce, sup_bounce=sup_bounce, complaints=compl,
+        bounce_prov=(new_bounce / denom_prov if denom_prov else 0.0),
+        bounce_incl=((new_bounce + sup_bounce) / denom_incl if denom_incl else 0.0),
         complaint=(compl / delv if delv else 0.0),
     )
 
@@ -75,7 +73,7 @@ def pct(x): return f'{x * 100:.2f}%'
 def line(w):
     return (f"{w['duration']:>4}: sent {w['accepted']:>5}  delivered {w['delivered']:>5}  "
             f"bounce {pct(w['bounce_prov'])} provider-facing "
-            f"({pct(w['bounce_incl'])} incl. {w['suppress']} suppressed)  "
+            f"({w['new_bounce']} new hard bounces, {w['sup_bounce']} already-suppressed)  "
             f"complaints {pct(w['complaint'])} ({w['complaints']})")
 
 def main():
