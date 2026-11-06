@@ -466,3 +466,12 @@
 .subscribe-form .btn { flex: 0 0 auto; }
 .form-note { max-width: 520px; margin: 14px 0; padding: 12px 14px; border-radius: 8px; background: var(--brick-bg); border: 1px solid var(--brass-soft); color: var(--ink); font-size: 14.5px; }
 .form-note.is-error { background: var(--advisory-bg); border-color: var(--advisory); }
+
+.notice-rescheduled {
+  margin: 0 0 22px; padding: 14px 16px;
+  border: 1px solid var(--advisory); border-left-width: 4px; border-radius: 8px;
+  background: var(--advisory-bg); color: var(--ink);
+  font-family: var(--sans); font-size: 15px; line-height: 1.55;
+}
+.notice-rescheduled strong { color: var(--advisory); }
+.notice-rescheduled a { color: var(--advisory); font-weight: 600; white-space: nowrap; }

@@ -10,7 +10,7 @@
 {{ $mtgs := where (where site.RegularPages "Section" "meetings") "Params.meeting_type" "in" (slice "regular" "special") }}
 {{ $future := (where $mtgs "Date" ">=" $today).ByDate }}
 {{ $upcoming := false }}
-{{ if gt (len $future) 0 }}{{ $upcoming = index $future 0 }}{{ end }}
+{{ range $future }}{{ if and (not $upcoming) (not .Params.rescheduled_to) }}{{ $upcoming = . }}{{ end }}{{ end }}
 
 {{ $defaultTime := "6:30 PM" }}
 {{ $defaultLocation := printf "%s, %s" .Site.Params.meetingPlace .Site.Params.meetingAddress }}

@@ -11,6 +11,13 @@
 <article class="wrap article">
   <div class="section-label">Public Meeting Notice</div>
   <h1 class="article-title">{{ .Title }}</h1>
+  {{ with .Params.rescheduled_to }}
+  <div class="notice-rescheduled">
+    <strong>This meeting was rescheduled.</strong>
+    The meeting originally noticed for {{ $.Date.Format "Monday, January 2, 2006" }}{{ with $.Params.rescheduled_date }} will now be held {{ (time.AsTime .).Format "Monday, January 2, 2006" }}{{ end }}.
+    <a href="{{ . }}">View the current notice &rarr;</a>
+  </div>
+  {{ end }}
   <div class="prose">
     {{ if .Params.archived }}
     <p>{{ $body }} of the City of Spring Branch, Texas. Meeting held {{ .Date.Format "Monday, January 2, 2006" }}.</p>
