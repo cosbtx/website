@@ -2,7 +2,7 @@
 """Email a notice to the Mailgun list for each post/meeting ADDED in this push.
 Only added files trigger email (edits, redeploys, and documents never do).
 A post/meeting with `notify: false` in its frontmatter is skipped."""
-import os, re, sys, subprocess, base64, html as H, urllib.request, urllib.parse
+import os, re, sys, time, subprocess, base64, html as H, urllib.request, urllib.parse, urllib.error
 from datetime import datetime
 
 API_KEY = os.environ.get('MAILGUN_API_KEY')
@@ -49,6 +49,30 @@ def parse(path):
 def fmt_date(s):
     try: return datetime.strptime(s[:10], '%Y-%m-%d').strftime('%A, %B %-d, %Y')
     except Exception: return s[:10]
+
+def wait_live(url, timeout=480, interval=10):
+    """Wait until url is actually served (HTTP 200) before we email a link to it.
+    The push fires this job and the Cloudflare Pages deploy at the same time, and
+    the deploy takes a minute or two, so without this the email can beat the page
+    and a fast clicker gets a 404. A cache-buster query keeps us from being fooled
+    by an edge-cached 404. Returns True once live, False if it never came up."""
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        probe = url + ('&' if '?' in url else '?') + '__live=' + str(int(time.time()))
+        try:
+            code = urllib.request.urlopen(
+                urllib.request.Request(probe, method='HEAD', headers={
+                    'User-Agent': 'CityNoticeBot/1.0 (+https://cityofspringbranch.gov)'}),
+                timeout=15).status
+            if code == 200:
+                print('live:', url); return True
+        except urllib.error.HTTPError as e:
+            code = e.code
+        except Exception as e:
+            code = repr(e)
+        print(f'waiting for deploy ({code}):', url)
+        time.sleep(interval)
+    return False
 
 def button(href, label):
     return (f'<table role="presentation" cellpadding="0" cellspacing="0" style="margin:4px 0;">'
@@ -104,7 +128,7 @@ def build(path):
                 f'View the full notice: {url}\n\n'
                 f'You are receiving this because you subscribed to City of Spring Branch notices.\n'
                 f'Unsubscribe: {SITE}/subscription-management/?e=%recipient.e%&t=%recipient.h%\n')
-        return subject, shell('Public Meeting Notice', inner), text
+        return subject, shell('Public Meeting Notice', inner), text, url
     else:
         slug = d.get('slug') or re.sub(r'^\d{4}-\d{2}-\d{2}-', '', os.path.basename(path)[:-3])
         url = f'{SITE}/posts/{slug}/'
@@ -117,14 +141,16 @@ def build(path):
                 f'Read the full notice: {url}\n\n'
                 f'You are receiving this because you subscribed to City of Spring Branch notices.\n'
                 f'Unsubscribe: {SITE}/subscription-management/?e=%recipient.e%&t=%recipient.h%\n')
-        return title, shell(cat, inner), text
+        return title, shell(cat, inner), text, url
 
 sent = 0
 for path in added:
     if not os.path.exists(path): continue
     r = build(path)
     if not r: continue
-    subject, html, text = r
+    subject, html, text, url = r
+    if not wait_live(url):
+        print('WARNING: page not live after wait; sending anyway so the notice is not withheld:', url)
     unsub = f'<{SITE}/unsubscribe?e=%recipient.e%&t=%recipient.h%>'
     data = urllib.parse.urlencode({
         'from': FROM, 'to': LIST, 'subject': subject, 'html': html, 'text': text,
